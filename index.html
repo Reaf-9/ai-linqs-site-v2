@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- ▼ v2 テスト版：本番公開時に noindex を外す（README「公開前に外す・決めるもの」参照） -->
+<meta name="robots" content="noindex,nofollow">
+<title>AI Linqs｜中小企業のためのAI導入パートナー｜研修から定着まで“共に”</title>
+<meta name="description" content="AI Linqsは、研修やツール導入で終わらせず、御社の現場に合わせてAIを設計し定着まで伴走するAI導入パートナーです。属人化・確認待ち・人手不足の課題を、経営者と“共に”解決します。まずはLINEで無料相談を。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Linqs｜中小企業のためのAI導入パートナー">
+<meta property="og:description" content="研修やツール導入で終わらせない。現場に合わせて設計し、定着まで“共に”伴走するAI導入パートナー。">
+<meta property="og:site_name" content="AI Linqs">
+<meta name="theme-color" content="#0e0e0e">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-01.jpg" media="(min-width: 768px), (orientation: landscape)">
+<link rel="preload" as="image" href="assets/hero-01-sp.jpg" media="(max-width: 767px) and (orientation: portrait)">
+<style>
+/* ============================================================
+   AI Linqs v2 — ダークテーマ 1ページ構成
+   ベース #0e0e0e〜#1a1a1a ／ テキスト オフホワイト ／ アクセント #c9a961
+   ホバーはすべて 0.3s ease
+   ============================================================ */
+:root{
+  --bg:#0e0e0e; --bg-2:#141414; --bg-3:#1a1a1a;
+  --text:#ece8df; --muted:rgba(236,232,223,.66); --faint:rgba(236,232,223,.42);
+  --line:rgba(236,232,223,.10); --line-2:rgba(236,232,223,.18);
+  --gold:#c9a961; --gold-hi:#d9bf85; --gold-soft:rgba(201,169,97,.10);
+  --ink:#0e0e0e;
+  --font:"Inter","Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;
+  --t:.3s ease;
+  --gutter:clamp(20px,5vw,64px);
+  --max:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{color-scheme:dark;scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+html:has(dialog[open]){overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.9;letter-spacing:.02em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body.is-locked{overflow:hidden}
+/* 素材感：ごく薄いグレイン */
+body::after{content:"";position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,h4,h5{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.45;font-feature-settings:"palt";word-break:auto-phrase}
+p{margin:0;text-wrap:pretty}
+.nw{display:inline-block}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+strong{font-weight:500;color:var(--text)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.container{width:100%;max-width:calc(var(--max) + var(--gutter)*2);margin-inline:auto;padding-inline:var(--gutter)}
+.gold{color:var(--gold)}
+.skip{position:absolute;left:-9999px;top:12px;z-index:300;background:var(--gold);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px}
+.skip:focus{left:12px}
+
+/* ---------- ボタン ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:inherit;font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.2;padding:.85em 1.6em;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:background-color var(--t),color var(--t),border-color var(--t)}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn--gold{background:var(--gold);color:var(--ink)}
+.btn--gold:hover{background:var(--gold-hi)}
+.btn--ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn--lg{font-size:15px;padding:1.05em 2.2em}
+
+/* ---------- ヘッダー ---------- */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px var(--gutter)}
+.site-header::before{content:"";position:absolute;inset:0 0 -36px 0;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(14,14,14,.97) 0%,rgba(14,14,14,.92) 66%,rgba(14,14,14,0) 100%);opacity:0;transition:opacity var(--t)}
+.site-header.is-scrolled::before{opacity:1}
+.logo{justify-self:start;font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1;white-space:nowrap;transition:color var(--t)}
+.logo__ai{color:var(--gold)}
+.logo:hover{color:var(--gold-hi)}
+.pill-nav ul{display:flex;gap:2px;margin:0;padding:5px;list-style:none;background:rgba(14,14,14,.5);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);border:1px solid rgba(236,232,223,.1);border-radius:999px}
+.pill-nav a{display:block;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.01em;line-height:1.2;color:rgba(236,232,223,.78);transition:background-color var(--t),color var(--t)}
+.pill-nav a:hover{color:var(--text);background:rgba(236,232,223,.07)}
+.pill-nav a.is-active{background:var(--gold);color:var(--ink)}
+.pill-nav a.is-active:hover{background:var(--gold-hi)}
+.header__end{justify-self:end;display:flex;align-items:center;gap:10px}
+.header__cta{font-size:13px;padding:.75em 1.3em}
+.burger{display:none;width:44px;height:44px;padding:0;border-radius:999px;border:1px solid rgba(236,232,223,.16);background:rgba(14,14,14,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:var(--text);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:border-color var(--t)}
+.burger:hover{border-color:var(--gold)}
+.burger span{display:block;width:18px;height:1px;background:currentColor;transition:transform var(--t)}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media (max-width:1080px){
+  .pill-nav{display:none}
+  .site-header{grid-template-columns:1fr auto}
+  .burger{display:inline-flex}
+}
+@media (max-width:600px){.header__cta{display:none}}
+
+/* SPメニュー */
+.sp-menu{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;justify-content:center;padding:96px var(--gutter) 40px;background:rgba(14,14,14,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity var(--t),visibility 0s linear .3s}
+.sp-menu.is-open{opacity:1;visibility:visible;transition:opacity var(--t),visibility 0s}
+.sp-menu ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.sp-menu li{border-bottom:1px solid var(--line)}
+.sp-link{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;font-size:clamp(22px,6vw,28px);font-weight:500;letter-spacing:-.02em;line-height:1.3;transition:color var(--t)}
+.sp-link small{font-size:12px;font-weight:400;letter-spacing:.06em;color:var(--faint)}
+.sp-link:hover,.sp-link.is-active{color:var(--gold)}
+.sp-menu .btn{margin-top:32px}
+
+/* ---------- ヒーロー ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--bg);isolation:isolate}
+.hero__slides{position:absolute;inset:0;z-index:-2}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.slide.is-prev{opacity:1;z-index:1;transition:none}
+.slide.is-active{opacity:1;z-index:2}
+.slide__img{position:absolute;inset:0;background:var(--img) center/cover no-repeat;filter:saturate(.35) brightness(.62) contrast(1.05);will-change:transform}
+@media (max-width:767px) and (orientation:portrait){.slide__img{background-image:var(--img-sp)}}
+.slide.is-active .slide__img,.slide.is-prev .slide__img{animation:kenburns 10s linear forwards}
+.slide[data-kb="1"] .slide__img{transform-origin:35% 60%}
+.slide[data-kb="2"] .slide__img{transform-origin:65% 40%}
+.slide[data-kb="3"] .slide__img{transform-origin:60% 55%}
+.slide[data-kb="4"] .slide__img{transform-origin:40% 35%}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+.hero__shade{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to top,rgba(14,14,14,1) 0%,rgba(14,14,14,.62) 36%,rgba(14,14,14,.18) 68%,rgba(14,14,14,.5) 100%),
+  linear-gradient(to right,rgba(14,14,14,.72) 0%,rgba(14,14,14,0) 62%)}
+.hero__content{position:absolute;left:0;right:0;bottom:clamp(108px,15vh,150px)}
+.hero__meta{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.14em;line-height:1;color:var(--muted);font-variant-numeric:tabular-nums}
+.hero__num{color:var(--gold)}
+.hero__progress{position:relative;width:56px;height:1px;background:rgba(236,232,223,.2);overflow:hidden}
+.hero__progress span{position:absolute;inset:0;background:var(--gold);transform-origin:left center;transform:scaleX(0)}
+.hero__progress span.is-running{animation:heroBar 8s linear forwards}
+@keyframes heroBar{to{transform:scaleX(1)}}
+.hero.is-paused .slide__img,.hero.is-paused .hero__progress span,
+.hero.is-offscreen .slide__img,.hero.is-offscreen .hero__progress span{animation-play-state:paused}
+.hero__place{margin-top:18px;font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.hero__place .sep{margin-inline:.9em;color:var(--gold)}
+.hero__city{white-space:nowrap}
+.hero__copies{display:grid;margin-top:22px;max-width:46rem}
+.copy{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
+.copy.is-active{opacity:1;transform:none;transition-delay:.5s}
+.copy__title{font-size:clamp(1.9rem,5.2vw,4.4rem);font-weight:500;line-height:1.3;letter-spacing:-.02em}
+.copy__sub{margin-top:22px;max-width:36em;font-size:clamp(14px,1.1vw,16px);line-height:2;color:var(--muted)}
+.hero__chips{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.hero__chips li{font-size:12px;letter-spacing:.06em;line-height:1;padding:8px 14px;border:1px solid rgba(236,232,223,.22);border-radius:999px;color:rgba(236,232,223,.86);background:rgba(14,14,14,.3)}
+.hero__scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;line-height:1;color:var(--muted);transition:color var(--t)}
+.hero__scroll:hover{color:var(--gold)}
+.hero__scroll i{position:relative;display:block;width:1px;height:52px;background:rgba(236,232,223,.16);overflow:hidden}
+.hero__scroll i::after{content:"";position:absolute;inset:0;background:var(--gold);animation:scrollLine 2.4s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
+.hero__pause{position:absolute;right:var(--gutter);bottom:24px;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:999px;border:1px solid rgba(236,232,223,.22);background:rgba(14,14,14,.35);color:var(--text);cursor:pointer;transition:border-color var(--t),color var(--t)}
+.hero__pause:hover{border-color:var(--gold);color:var(--gold)}
+.hero__pause svg{width:14px;height:14px}
+.hero__pause .i-play,.hero.is-paused .hero__pause .i-pause{display:none}
+.hero.is-paused .hero__pause .i-play{display:block}
+
+/* ---------- セクション共通 ---------- */
+.section{position:relative;padding-block:clamp(96px,13vw,168px)}
+.section--alt{background:var(--bg-2)}
+.sec-head{display:grid;gap:20px;margin-bottom:clamp(56px,7vw,88px)}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1;text-transform:uppercase;color:var(--gold)}
+.eyebrow::after{content:"";width:40px;height:1px;background:currentColor;opacity:.55}
+.eyebrow__num{color:var(--faint);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.sec-title{font-size:clamp(1.75rem,3.6vw,3rem)}
+.sec-lead{max-width:40em;color:var(--muted)}
+.block{margin-top:clamp(88px,11vw,136px)}
+.block-head{display:grid;gap:14px;max-width:48rem;margin-bottom:clamp(36px,4vw,48px)}
+.sub-eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;line-height:1;text-transform:uppercase;color:var(--gold)}
+.block-title{font-size:clamp(1.35rem,2.4vw,2rem)}
+.block-lead{color:var(--muted)}
+.note{margin-top:20px;font-size:13px;color:var(--faint)}
+.todo{margin-left:.4em;font-size:.85em;color:var(--faint)}
+.price{margin-top:28px;padding:2px 0 2px 16px;font-size:13px;line-height:1.8;border-left:1px solid var(--gold)}
+.split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+
+/* 3カラム */
+.cols-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(32px,4vw,56px)}
+@media (max-width:860px){.cols-3{grid-template-columns:1fr;gap:40px}}
+.col{padding-top:26px;border-top:1px solid var(--line-2)}
+.col:hover{border-color:var(--gold)}
+.col__tag{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:12px;letter-spacing:.14em;line-height:1;text-transform:uppercase;color:var(--gold);font-variant-numeric:tabular-nums}
+.col__title{margin-bottom:14px;font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6}
+.col p,.col li{font-size:14.5px;color:var(--muted)}
+.col strong{box-shadow:inset 0 -1px 0 rgba(201,169,97,.6)}
+.dash{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dash li{position:relative;padding-left:18px}
+.dash li::before{content:"";position:absolute;left:0;top:.95em;width:8px;height:1px;background:var(--gold)}
+
+/* ---------- Service ---------- */
+.lineup{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5vw,72px);margin:0;padding:0;list-style:none;border-bottom:1px solid var(--line)}
+.lineup li{border-top:1px solid var(--line)}
+@media (max-width:760px){.lineup{grid-template-columns:1fr}}
+.lu{display:grid;grid-template-columns:44px minmax(0,1fr) 20px;gap:16px;height:100%;padding:26px 0}
+.lu__no{font-size:12px;line-height:2.3;color:var(--faint);font-variant-numeric:tabular-nums}
+.lu__tag{font-size:11px;letter-spacing:.08em;color:var(--gold)}
+.lu__title{margin-top:4px;font-size:1.125rem;transition:color var(--t)}
+.lu__desc{margin-top:6px;font-size:14px;color:var(--muted)}
+.lu__more{display:inline-block;margin-top:10px;font-size:12px;letter-spacing:.06em;color:var(--gold)}
+.lu__arrow{align-self:center;color:var(--faint);transition:color var(--t)}
+a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
+
+.feature{padding-block:clamp(48px,6vw,72px);border-top:1px solid var(--line)}
+.feature:last-child{border-bottom:1px solid var(--line)}
+.feature__label{font-size:12px;letter-spacing:.08em;color:var(--gold)}
+.feature__title{margin-top:12px;font-size:clamp(1.4rem,2.6vw,2.1rem)}
+.feature__text{margin-top:18px;color:var(--muted)}
+@media (min-width:861px){.feature>.reveal:first-child{position:sticky;top:120px}}
+.ba{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:20px;align-items:stretch;margin-bottom:40px}
+.ba__col{padding:26px 28px;border:1px solid var(--line)}
+.ba__col--after{border-color:rgba(201,169,97,.38);background:var(--gold-soft)}
+.ba__h{margin-bottom:12px;font-size:12px;letter-spacing:.08em;color:var(--gold)}
+.ba__arrow{align-self:center;color:var(--gold)}
+@media (max-width:640px){.ba{grid-template-columns:1fr}.ba__arrow{justify-self:center;transform:rotate(90deg)}}
+.rows{display:grid}
+.row{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr);gap:8px 28px;padding-block:20px;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row__h{font-size:15px;line-height:1.7}
+.row p,.row li{font-size:14.5px;color:var(--muted)}
+@media (max-width:640px){.row{grid-template-columns:1fr}}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:center;padding:clamp(28px,4vw,48px);border:1px solid var(--line-2);border-left:2px solid var(--gold)}
+.panel p{color:var(--muted)}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;border-top:1px solid var(--line-2);-webkit-overflow-scrolling:touch}
+.compare{width:100%;min-width:680px;border-collapse:collapse;font-size:14px;line-height:1.7}
+.compare th,.compare td{padding:18px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.compare thead th{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--gold)}
+.compare tbody th{font-weight:500;white-space:nowrap}
+.compare td{color:var(--muted)}
+.band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;margin-top:clamp(72px,9vw,112px);padding:clamp(28px,4vw,44px) clamp(24px,4vw,48px);border:1px solid var(--line-2);background:linear-gradient(120deg,rgba(201,169,97,.09),rgba(201,169,97,0) 60%)}
+.band__title{font-size:clamp(1.2rem,2vw,1.6rem)}
+.band p{margin-top:8px;font-size:14px;color:var(--muted)}
+
+/* ---------- Works ---------- */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(56px,6vw,80px) clamp(24px,3vw,40px)}
+@media (max-width:760px){.works{grid-template-columns:1fr}}
+.work__media{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--bg-3)}
+.work__media img{width:100%;height:100%;object-fit:cover;filter:saturate(.3) brightness(.58) contrast(1.05);transition:filter var(--t)}
+.work__overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:clamp(20px,3vw,32px);opacity:0;transition:opacity var(--t)}
+.work__no{font-size:12px;letter-spacing:.18em;line-height:1;text-transform:uppercase;color:var(--gold)}
+.work__cat{font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:500;letter-spacing:-.02em;line-height:1.4}
+.work:hover .work__media img,.work:focus-within .work__media img{filter:saturate(.35) brightness(.36)}
+.work:hover .work__overlay,.work:focus-within .work__overlay{opacity:1}
+@media (hover:none){
+  .work__overlay{opacity:1;background:linear-gradient(to top,rgba(10,10,10,.7),rgba(10,10,10,0) 55%)}
+  .work__cat{display:none}
+}
+.work__body{padding-top:28px}
+.work__tags{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;letter-spacing:.04em;line-height:1.6}
+.work__tags span:first-child{color:var(--gold)}
+.work__tags span+span{color:var(--faint)}
+.work__title{margin-top:10px;font-size:clamp(1.25rem,2vw,1.6rem)}
+.work__detail{display:grid;margin:22px 0 0}
+.work__detail div{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:12px;padding-block:16px;border-top:1px solid var(--line)}
+.work__detail dt{padding-top:.2em;font-size:12px;letter-spacing:.1em;color:var(--gold)}
+.work__detail dd{margin:0;font-size:14.5px;color:var(--muted)}
+.work--cta .work__body p{margin-top:12px;color:var(--muted)}
+.work--cta .btn{margin-top:24px}
+
+/* ---------- Process ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(28px,3vw,40px);margin:0;padding:0;list-style:none}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{padding-top:28px;border-top:1px solid var(--line-2)}
+.step:hover{border-color:var(--gold)}
+.step__num{display:block;font-size:clamp(2.6rem,4.6vw,3.75rem);font-weight:500;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(201,169,97,.75)}
+.step__label{margin-top:22px;font-size:11px;letter-spacing:.18em;color:var(--gold)}
+.step h3{margin-top:6px;font-size:1.15rem}
+.step p:last-child{margin-top:12px;font-size:14.5px;color:var(--muted)}
+
+/* ---------- FAQ ---------- */
+.faq-layout .sec-head{margin-bottom:0}
+@media (min-width:861px){.faq-layout .sec-head{position:sticky;top:120px}}
+.faq-group+.faq-group{margin-top:64px}
+.faq-group__title{margin-bottom:16px;font-size:13px;letter-spacing:.06em;color:var(--gold)}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:grid;grid-template-columns:2.4em minmax(0,1fr) 16px;gap:8px;align-items:baseline;padding:24px 0;list-style:none;cursor:pointer;font-size:clamp(15px,1.3vw,17px);font-weight:500;line-height:1.7;transition:color var(--t)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--gold)}
+.faq__q{font-size:13px;letter-spacing:.06em;color:var(--gold)}
+.faq__pm{position:relative;align-self:center;width:14px;height:14px}
+.faq__pm::before,.faq__pm::after{content:"";position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transition:transform var(--t)}
+.faq__pm::after{transform:rotate(90deg)}
+.faq details[open] .faq__pm::after{transform:rotate(0)}
+.faq__a{display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:8px;padding:0 24px 26px 0;color:var(--muted)}
+.faq__a span{font-size:13px;letter-spacing:.06em;color:var(--faint)}
+.faq-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.faq-cta p{font-size:14px;color:var(--muted)}
+.faq-cta strong{display:block;margin-bottom:4px;font-size:16px}
+
+/* ---------- Company ---------- */
+.company-row+.company-row{margin-top:clamp(72px,9vw,112px);padding-top:clamp(56px,7vw,88px);border-top:1px solid var(--line)}
+.message p+p{margin-top:1.4em}
+.message p{color:var(--muted)}
+.message p:first-child{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.9;color:var(--text)}
+.message__sign{width:62%;max-width:230px;margin:56px 0 0 auto;opacity:.95}
+.prose p{color:var(--muted)}
+.prose ul{margin:1.2em 0;padding:0;list-style:none;display:grid;gap:10px}
+.prose li{position:relative;padding-left:20px}
+.prose li::before{content:"";position:absolute;left:0;top:.95em;width:8px;height:1px;background:var(--gold)}
+.info{margin:0;border-top:1px solid var(--line-2)}
+.info div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:16px;padding-block:20px;border-bottom:1px solid var(--line)}
+.info dt{font-size:13px;letter-spacing:.06em;color:var(--faint)}
+.info dd{margin:0}
+@media (max-width:600px){.info div{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- Contact ---------- */
+.contact{position:relative;padding-block:clamp(112px,15vw,200px);text-align:center;border-top:1px solid var(--line);background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(201,169,97,.11),rgba(201,169,97,0) 70%),var(--bg-2)}
+.contact .eyebrow{justify-content:center}
+.contact .eyebrow::before{content:"";width:40px;height:1px;background:currentColor;opacity:.55}
+.contact__title{margin-top:28px;font-size:clamp(2rem,5vw,4rem);line-height:1.35}
+.contact__lead{margin-top:24px;color:var(--muted)}
+.contact__cta{margin-top:40px}
+.contact .block{text-align:left}
+.line-card{max-width:560px;margin:clamp(56px,7vw,80px) auto 0;padding:clamp(32px,5vw,48px);text-align:center;border:1px solid var(--line-2);background:rgba(14,14,14,.55)}
+.line-card__qr{width:140px;height:140px;margin:0 auto 26px;border-radius:6px;overflow:hidden;background:#fff}
+.line-card h3{font-size:1.25rem}
+.line-card p{margin-top:10px;font-size:14px;color:var(--muted)}
+.line-card .btn{margin-top:26px}
+.line-card small{display:block;margin-top:14px;font-size:12px;color:var(--faint)}
+.contact__privacy{margin-top:32px;font-size:13px;color:var(--faint)}
+.contact__privacy a,.link{color:var(--gold);box-shadow:inset 0 -1px 0 rgba(201,169,97,.5);transition:color var(--t)}
+.contact__privacy a:hover,.link:hover{color:var(--gold-hi)}
+
+/* ---------- フッター ---------- */
+.footer{padding-block:72px 32px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.footer__grid{display:grid;grid-template-columns:1.1fr 1fr auto;gap:40px}
+@media (max-width:860px){.footer__grid{grid-template-columns:1fr}}
+.footer .logo{font-size:18px}
+.footer__desc{margin-top:16px}
+.footer__nav ul{display:grid;grid-template-columns:repeat(2,auto);gap:10px 36px;margin:0;padding:0;list-style:none}
+.footer__nav a{transition:color var(--t)}
+.footer__nav a:hover{color:var(--gold)}
+.footer__copy{margin-top:56px;padding-top:24px;font-size:12px;letter-spacing:.04em;color:var(--faint);border-top:1px solid var(--line)}
+
+/* ---------- プライバシーポリシー（モーダル） ---------- */
+.modal{width:min(760px,calc(100% - 32px));max-height:min(88vh,920px);padding:0;color:var(--text);background:var(--bg-2);border:1px solid var(--line-2)}
+.modal::backdrop{background:rgba(0,0,0,.72)}
+.modal__inner{padding:clamp(28px,5vw,56px)}
+.modal__head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px}
+.modal__head h2{margin-top:14px;font-size:clamp(1.4rem,3vw,2rem)}
+.modal h3{margin:32px 0 10px;font-size:16px}
+.modal p,.modal li{font-size:14px;color:var(--muted)}
+.modal ul{margin:0;padding-left:1.2em}
+.modal__updated{margin-top:36px;font-size:12px!important;color:var(--faint)!important}
+.modal__close{flex:none}
+
+/* ---------- テスト版バッジ（github.io／ローカルでのみ表示） ---------- */
+.test-badge{position:fixed;left:12px;bottom:12px;z-index:260;padding:6px 10px;font-size:10px;font-weight:600;letter-spacing:.14em;line-height:1;color:var(--ink);background:var(--gold);border-radius:999px;opacity:.9;pointer-events:none}
+
+/* ---------- スクロール演出 ---------- */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease calc(var(--d,0)*110ms),transform 1s ease calc(var(--d,0)*110ms),border-color var(--t)}
+.js .reveal.is-in{opacity:1;transform:none}
+.col,.step{transition:border-color var(--t)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:border-color var(--t)}
+  .slide__img{animation:none!important}
+  .hero__scroll i::after{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#philosophy">本文へスキップ</a>
+
+<!-- ============ ヘッダー ============ -->
+<header class="site-header" id="header">
+  <a href="#top" class="logo" aria-label="AI Linqs トップへ"><span class="logo__ai">AI</span> Linqs</a>
+  <nav class="pill-nav" aria-label="グローバルナビゲーション">
+    <ul>
+      <li><a href="#philosophy" data-spy>Philosophy</a></li>
+      <li><a href="#service" data-spy>Service</a></li>
+      <li><a href="#works" data-spy>Works</a></li>
+      <li><a href="#process" data-spy>Process</a></li>
+      <li><a href="#company" data-spy>Company</a></li>
+      <li><a href="#contact" data-spy>Contact</a></li>
+    </ul>
+  </nav>
+  <div class="header__end">
+    <a href="#contact" class="btn btn--gold header__cta" data-line-cta>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+      LINEで無料相談
+    </a>
+    <button class="burger" id="burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="spMenu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- SPメニュー -->
+<div class="sp-menu" id="spMenu">
+  <nav aria-label="スマートフォン用メニュー">
+    <ul>
+      <li><a class="sp-link" href="#philosophy" data-spy>Philosophy<small>大切にしていること</small></a></li>
+      <li><a class="sp-link" href="#service" data-spy>Service<small>サービス</small></a></li>
+      <li><a class="sp-link" href="#works" data-spy>Works<small>実績</small></a></li>
+      <li><a class="sp-link" href="#process" data-spy>Process<small>導入の流れ</small></a></li>
+      <li><a class="sp-link" href="#company" data-spy>Company<small>会社概要</small></a></li>
+      <li><a class="sp-link" href="#contact" data-spy>Contact<small>お問い合わせ</small></a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="btn btn--gold btn--lg" data-line-cta>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+    LINEで無料相談
+  </a>
+</div>
+
+<main>
+
+  <!-- ============ ヒーロー（4枚・8秒ごとにクロスフェード＋Ken Burns） ============ -->
+  <section class="hero" id="top" aria-label="メインビジュアル">
+    <div class="hero__slides" aria-hidden="true">
+      <div class="slide is-active" data-kb="1"><div class="slide__img" style="--img:url('assets/hero-01.jpg');--img-sp:url('assets/hero-01-sp.jpg')"></div></div>
+      <div class="slide" data-kb="2"><div class="slide__img" data-img="assets/hero-02.jpg" data-img-sp="assets/hero-02-sp.jpg"></div></div>
+      <div class="slide" data-kb="3"><div class="slide__img" data-img="assets/hero-03.jpg" data-img-sp="assets/hero-03-sp.jpg"></div></div>
+      <div class="slide" data-kb="4"><div class="slide__img" data-img="assets/hero-04.jpg" data-img-sp="assets/hero-04-sp.jpg"></div></div>
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+
+    <div class="hero__content container">
+      <div class="hero__meta" aria-hidden="true">
+        <span><span class="hero__num" id="heroNum">01</span> / 04</span>
+        <span class="hero__progress"><span id="heroBar"></span></span>
+        <span id="heroLabel">AI LINQS</span>
+      </div>
+      <p class="hero__place">中小企業のための AI 導入パートナー<span class="hero__city"><span class="sep">—</span>KOBE, JAPAN</span></p>
+
+      <div class="hero__copies">
+        <div class="copy is-active" data-label="AI LINQS">
+          <h1 class="copy__title">人とAIの<br><span class="gold">ハイブリッド経営</span><br>を、当たり前に。</h1>
+          <p class="copy__sub">研修やツール導入で終わらせない。御社の現場に合わせてAIを設計し、使い続けられる状態まで“共に”伴走する。それがAI Linqsです。</p>
+        </div>
+        <div class="copy" data-label="CONNECTION">
+          <p class="copy__title">人の力を、<br>AIで引き出す。</p>
+          <p class="copy__sub">AIは、人を減らすための道具じゃない。<br>一人ひとりが本来の仕事に集中できるように。<br>人と人の“つながり”を、取り戻すために。</p>
+        </div>
+        <div class="copy" data-label="PARTNERSHIP">
+          <p class="copy__title">ともに考え、<br>ともに動く。</p>
+          <p class="copy__sub">外注先ではなく、伴走者として。<br>御社の現場に入り込み、課題を一緒に解く。<br>経営者の隣で、共に勝ちにいくパートナーへ。</p>
+        </div>
+        <div class="copy" data-label="THE FUTURE">
+          <p class="copy__title">テクノロジーが、<br>地域の未来を変える。</p>
+          <p class="copy__sub">人とAIのハイブリッド経営を、日本の新しいスタンダードに。<br>その一歩を、淡路から、御社から。</p>
+        </div>
+      </div>
+
+      <ul class="hero__chips"><li>完全無料</li><li>売り込みなし</li><li>LINEで気軽に</li></ul>
+    </div>
+
+    <a href="#philosophy" class="hero__scroll" aria-label="下へスクロール">scroll<i aria-hidden="true"></i></a>
+    <button class="hero__pause" id="heroPause" type="button" aria-label="スライドショーを一時停止">
+      <svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M3 2h2.5v10H3zM8.5 2H11v10H8.5z"/></svg>
+      <svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M3.5 1.8 12 7l-8.5 5.2z"/></svg>
+    </button>
+  </section>
+
+  <!-- ============ 01 Philosophy（ABOUT／Mission・Vision・Value） ============ -->
+  <section class="section" id="philosophy">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="eyebrow__num">01</span>Philosophy</p>
+        <h2 class="sec-title reveal" style="--d:1">「共に」を、<br>いちばん大切にする会社。</h2>
+        <p class="sec-lead reveal" style="--d:2">私たちは、AIを売る会社ではありません。経営者の隣で、定着まで“共に”走るAI導入パートナーです。</p>
+      </div>
+
+      <div class="block-head">
+        <p class="sub-eyebrow reveal">Mission / Vision / Value</p>
+        <h3 class="block-title reveal" style="--d:1">私たちが大切にしていること</h3>
+      </div>
+      <div class="cols-3">
+        <article class="col reveal">
+          <p class="col__tag">Mission</p>
+          <h4 class="col__title">AIを通じて、企業と未来をつなげる</h4>
+          <p>テクノロジーを「一部の大企業のもの」で終わらせない。中小企業の現場にこそ、AIの力を届けます。</p>
+        </article>
+        <article class="col reveal" style="--d:1">
+          <p class="col__tag">Vision</p>
+          <h4 class="col__title">人とAIのハイブリッド経営を、日本の新しいスタンダードに</h4>
+          <p>人にしかできない仕事に集中できる経営へ。AIと人が補い合う形を、当たり前にしていきます。</p>
+        </article>
+        <article class="col reveal" style="--d:2">
+          <p class="col__tag">Value</p>
+          <h4 class="col__title">「共に」が、AI Linqsのアイデンティティ</h4>
+          <ul class="dash">
+            <li>「共に」経営者の隣で、共に勝ちにいく</li>
+            <li>「共に」考え、共に動き、共に成果を出す</li>
+            <li>「共に」挑戦し続ける</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ISSUES（課題提起） ============ -->
+  <section class="section section--alt" id="issues">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal">Issues</p>
+        <h2 class="sec-title reveal" style="--d:1">こんな状況、ありませんか？</h2>
+        <p class="sec-lead reveal" style="--d:2">ひとつでも当てはまるなら、AIで変えられる余地があります。</p>
+      </div>
+      <div class="cols-3">
+        <article class="col reveal"><p class="col__tag">01</p><h3 class="col__title">確認が、社長に集まる</h3><p>判断や承認が経営者に集中し、<strong>売上が伸びるほど業務が詰まる</strong>。気づけば現場が止まる原因が自分になっている。</p></article>
+        <article class="col reveal" style="--d:1"><p class="col__tag">02</p><h3 class="col__title">人を増やしても、ラクにならない</h3><p>採用しても<strong>管理工数が減らず</strong>、教育コストばかり増える。人手は増えたのに利益改善につながらない。</p></article>
+        <article class="col reveal" style="--d:2"><p class="col__tag">03</p><h3 class="col__title">紙・Excel・口頭が、混在している</h3><p>情報がバラバラで、<strong>特定の人がいないと業務が止まる</strong>。引き継ぎも属人化し、ノウハウが残らない。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY AI LINQS（強み） ============ -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal">Why AI Linqs</p>
+        <h2 class="sec-title reveal" style="--d:1">“研修だけ・導入だけ”で、終わらせない。</h2>
+        <p class="sec-lead reveal" style="--d:2">同じ「AI支援」でも、私たちが大切にしているのはこの3つです。</p>
+      </div>
+      <div class="cols-3">
+        <article class="col reveal">
+          <h3 class="col__title">ROI起点で話す</h3>
+          <p>ツールの機能説明ではなく、<strong>工数削減と利益</strong>で語ります。投資に見合うかを一緒に判断します。</p>
+        </article>
+        <article class="col reveal" style="--d:1">
+          <h3 class="col__title">アナログ現場に強い</h3>
+          <p>紙・口頭・Excelが前提の現場でも導入できる設計が得意。<strong>「うちは無理」と諦めていた会社こそ</strong>伸びしろがあります。</p>
+        </article>
+        <article class="col reveal" style="--d:2">
+          <h3 class="col__title">定着まで伴走する</h3>
+          <p>研修や導入で終わらず、<strong>現場が自走できる状態まで</strong>一緒に作ります。経営者の隣で、共に勝ちにいきます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 Service（料金非表示） ============ -->
+  <section class="section section--alt" id="service">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="eyebrow__num">02</span>Service</p>
+        <h2 class="sec-title reveal" style="--d:1">「何を解決したいか」から選べます</h2>
+        <p class="sec-lead reveal" style="--d:2">まずは学ぶことから、業務の自動化、仕組み化まで。段階的に広げられるサービスをご用意しています。迷ったら無料相談でご一緒に整理します。</p>
+      </div>
+
+      <!-- GUIDE -->
+      <div class="block-head">
+        <p class="sub-eyebrow reveal">Guide</p>
+        <h3 class="block-title reveal" style="--d:1">迷ったら、ここから</h3>
+        <p class="block-lead reveal" style="--d:2">まずはAI研修から。必要に応じて、業務の自動化や仕組み化まで広げられます。</p>
+      </div>
+      <div class="cols-3">
+        <article class="col reveal"><h4 class="col__title">まず社内で使えるように</h4><p>AIの土台を作りたい → <strong>AI研修・教育</strong>。経営者の言葉で、3ヶ月で定着を目指します。</p></article>
+        <article class="col reveal" style="--d:1"><h4 class="col__title">特定の業務を楽にしたい</h4><p>反復業務・属人化・管理負荷を解消したい → <strong>AI社員・AI部署長構築</strong>。</p></article>
+        <article class="col reveal" style="--d:2"><h4 class="col__title">現場の仕組みを変えたい</h4><p>紙・Excel運用を置き換えたい → <strong>社内アプリ・業務システム制作</strong>。</p></article>
+      </div>
+
+      <!-- LINEUP -->
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Lineup</p>
+          <h3 class="block-title reveal" style="--d:1">サービスラインナップ</h3>
+          <p class="block-lead reveal" style="--d:2">料金はすべて「内容に応じてご提案」。明確な金額はサイトに掲載していません。まずはLINEで無料相談ください。</p>
+        </div>
+        <ul class="lineup">
+          <li class="reveal"><div class="lu"><span class="lu__no">01</span><div><p class="lu__tag">入口・無料</p><h4 class="lu__title">AIお得情報配信</h4><p class="lu__desc">LINEで役立つAI活用情報をお届け。まずは情報から、気軽に。</p></div></div></li>
+          <li class="reveal" style="--d:1"><a class="lu" href="#svc-training"><span class="lu__no">02</span><div><p class="lu__tag">まずはここから</p><h4 class="lu__title">AI研修・教育</h4><p class="lu__desc">社内にAIを定着させる3ヶ月のコーチング。経営者の言葉に合わせて進めます。</p><span class="lu__more">詳しく見る</span></div><span class="lu__arrow" aria-hidden="true">↓</span></a></li>
+          <li class="reveal"><div class="lu"><span class="lu__no">03</span><div><p class="lu__tag">コーチング</p><h4 class="lu__title">広告内製化／LPコーチング</h4><p class="lu__desc">Meta・Google広告やLPを、社内で回せるように伴走。</p></div></div></li>
+          <li class="reveal" style="--d:1"><a class="lu" href="#svc-aistaff"><span class="lu__no">04</span><div><p class="lu__tag">自動化・管理を軽く</p><h4 class="lu__title">AI社員・AI部署長構築</h4><p class="lu__desc">反復業務や確認・管理業務をAIが担い、担当者依存と管理負荷を解消。</p><span class="lu__more">詳しく見る</span></div><span class="lu__arrow" aria-hidden="true">↓</span></a></li>
+          <li class="reveal"><div class="lu"><span class="lu__no">05</span><div><p class="lu__tag">仕組み化</p><h4 class="lu__title">社内アプリ・業務システム制作</h4><p class="lu__desc">現場固有のフローを、そのまま使える仕組みに。紙・Excel運用を置き換えます。</p></div></div></li>
+          <li class="reveal" style="--d:1"><div class="lu"><span class="lu__no">06</span><div><p class="lu__tag">DX整備</p><h4 class="lu__title">社内DX整備</h4><p class="lu__desc">フォルダ・データベース・クラウド環境を整える。</p></div></div></li>
+          <li class="reveal"><div class="lu"><span class="lu__no">07</span><div><p class="lu__tag">プレミアム</p><h4 class="lu__title">AI顧問</h4><p class="lu__desc">継続的にAI戦略を伴走する、月額の顧問契約。</p></div></div></li>
+          <li class="reveal" style="--d:1"><a class="lu" href="#shigyo"><span class="lu__no">08</span><div><p class="lu__tag">士業向け</p><h4 class="lu__title">士業AI（無料お試し）</h4><p class="lu__desc">社労士・税理士など士業向けのAI。</p><span class="lu__more">詳しく見る</span></div><span class="lu__arrow" aria-hidden="true">↓</span></a></li>
+        </ul>
+        <p class="note">どれを選べばいいか迷ったら、<strong>まずはLINEで無料相談</strong>。現状をお聞きして、最適な進め方を一緒に整理します。（料金は内容に応じてご提案します）</p>
+      </div>
+
+      <!-- SERVICE DETAIL（AI研修・教育／AI社員・AI部署長構築） -->
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Service</p>
+          <h3 class="block-title reveal" style="--d:1">学ぶ、から、任せるへ。</h3>
+          <p class="block-lead reveal" style="--d:2">社内にAIを定着させる「AI研修・教育」と、反復業務を自動化する「AI社員構築」。AI Linqsの中心となる2つのサービスです。</p>
+        </div>
+
+        <div class="feature split" id="svc-training">
+          <div class="reveal">
+            <p class="feature__label">①コーチング事業</p>
+            <h4 class="feature__title">AI研修・教育</h4>
+            <p class="feature__text">「AIって何？」の状態から、3ヶ月で“現場で使える”状態へ。経営者の言葉に合わせて進めるので、知識ゼロでも大丈夫です。</p>
+            <p class="price">料金は内容に応じてご提案します（まずはLINEで無料相談）</p>
+          </div>
+          <div class="reveal" style="--d:1">
+            <div class="ba">
+              <div class="ba__col"><p class="ba__h">Before（よくある状態）</p><ul class="dash">
+                <li>AIを何に使えばいいか分からない</li>
+                <li>現場が使ってくれない</li>
+                <li>何から始めればいいか整理できない</li>
+              </ul></div>
+              <div class="ba__arrow" aria-hidden="true">→</div>
+              <div class="ba__col ba__col--after"><p class="ba__h">After（3ヶ月後）</p><ul class="dash">
+                <li>業務で使えるルールが整う</li>
+                <li>担当者が自走できる</li>
+                <li>次の投資判断ができる</li>
+              </ul></div>
+            </div>
+            <div class="rows">
+              <div class="row"><h5 class="row__h">こんな企業に向いています</h5><p>「研修をやったが定着しなかった」「何から始めるか整理して、外部に任せたい」「社内の理解を統一してから導入を判断したい」</p></div>
+              <div class="row"><h5 class="row__h">3ヶ月の進め方</h5><ul class="dash"><li>1ヶ月目：現状分析・課題整理</li><li>2ヶ月目：ルール・テンプレート作成・現場展開</li><li>3ヶ月目：定着確認・次のステップ設計</li></ul></div>
+              <div class="row"><h5 class="row__h">選ばれる3つの理由</h5><ul class="dash"><li>①研修で終わらない（現場のルールまで作る）</li><li>②経営者の言語に合わせる</li><li>③次の投資判断の材料まで提供する</li></ul></div>
+            </div>
+            <p class="note">関連メニュー：広告内製化コーチング（Meta／Google）、LPコーチング もご用意。詳細はご相談ください。<span class="todo">[料金：要設定]</span></p>
+          </div>
+        </div>
+
+        <div class="feature split" id="svc-aistaff">
+          <div class="reveal">
+            <p class="feature__label">②AI社員・AI部署長構築</p>
+            <h4 class="feature__title">業務も管理も、AIに“社員・部署長のように”任せる</h4>
+            <p class="feature__text">反復業務はAI社員が、確認・管理業務はAI部署長が担当。担当者依存と管理者への確認集中を解消し、人にしかできない仕事に集中できる体制をつくります。</p>
+            <p class="price">料金はご相談ください（要見積り）</p>
+          </div>
+          <div class="rows reveal" style="--d:1">
+            <div class="row"><h5 class="row__h">AI社員構築</h5><p>反復・定型業務をAIが担い、担当者依存を解消。「あの人しか分からない」をなくし、業務を仕組みに落とし込みます。</p></div>
+            <div class="row"><h5 class="row__h">AI部署長構築</h5><p>報告・確認・進捗管理などをAIが整理。管理者への確認集中をほどき、判断のボトルネックを解消します。</p></div>
+            <div class="row"><h5 class="row__h">進め方</h5><p>現場をヒアリングし、効果の高い業務から段階的に。無理のない範囲で、定着まで伴走します。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOR PROFESSIONALS（士業AI） -->
+      <div class="block" id="shigyo">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">For Professionals</p>
+          <h3 class="block-title reveal" style="--d:1">士業AI（無料お試しあり）</h3>
+        </div>
+        <div class="panel reveal">
+          <p>社労士・税理士など、士業の実務に特化したAI。専門業務の効率化を、無料お試しから体感いただけます。詳しい内容・お試し条件は専用ページでご案内します。</p>
+          <a href="#contact" class="btn btn--ghost" data-line-cta>詳細を見る</a>
+        </div>
+      </div>
+
+      <!-- COMPARISON -->
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Comparison</p>
+          <h3 class="block-title reveal" style="--d:1">サービス比較</h3>
+        </div>
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <thead><tr><th scope="col">サービス</th><th scope="col">解決する課題</th><th scope="col">こんな企業に</th><th scope="col">料金</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">AI研修・教育</th><td>社内にAIが定着しない</td><td>これから始めたい</td><td>ご相談ください</td></tr>
+              <tr><th scope="row">AI社員・AI部署長構築</th><td>反復業務・属人化・確認集中</td><td>業務自動化・管理負荷を減らしたい</td><td>ご相談ください</td></tr>
+              <tr><th scope="row">社内アプリ・業務システム</th><td>紙・Excel運用の限界</td><td>現場の仕組みを変えたい</td><td>ご相談ください</td></tr>
+              <tr><th scope="row">AI顧問</th><td>継続的なAI戦略</td><td>複数導入後の伴走が欲しい</td><td>ご相談ください</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">※ 上記のほか、社内DX整備・OA機器選定補助などもご相談いただけます。</p>
+      </div>
+
+      <div class="band reveal">
+        <div>
+          <h3 class="band__title">どれが合うか分からない方へ。</h3>
+          <p>完全無料・売り込みなし。LINEで現状をお聞きし、最適な進め方を一緒に整理します。</p>
+        </div>
+        <a href="#contact" class="btn btn--gold" data-line-cta>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+          LINEで無料AI相談
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 Works（導入事例） ============ -->
+  <section class="section" id="works">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="eyebrow__num">03</span>Works</p>
+        <h2 class="sec-title reveal" style="--d:1">導入事例</h2>
+        <p class="sec-lead reveal" style="--d:2">「すごい成果」を盛るのではなく、業務の何がどう変わったか。実際の導入事例を、変化の構造でご紹介します。</p>
+        <p class="note reveal" style="--d:3">※ 成果は数値ではなく、業務がどう変わったかでご紹介しています。</p>
+      </div>
+
+      <!-- [要確認] 各社の掲載許諾（社名・内容の公開可否）を最終確認のこと -->
+      <div class="works">
+        <article class="work reveal">
+          <figure class="work__media">
+            <img src="assets/works-01.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__overlay" aria-hidden="true"><span class="work__no">Case 01</span><span class="work__cat">門正運輸株式会社 様</span></figcaption>
+          </figure>
+          <div class="work__body">
+            <p class="work__tags"><span>業務システム開発</span><span>現場のアナログ業務が多い企業</span></p>
+            <h3 class="work__title">門正運輸株式会社 様</h3>
+            <dl class="work__detail">
+              <div><dt>課題</dt><dd>人による確認作業が多く、確認漏れや再確認が頻発。業務効率が上がりにくい状態でした。</dd></div>
+              <div><dt>成果</dt><dd>配車表・荷物の状況・人件費・配送費など、バラバラだった情報を一つに連携。ひとつを更新すると関連情報がすべて連動するため、確認の手間が大きく減り、人を増やさずに業務が回る体制になりました。</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="work reveal" style="--d:1">
+          <figure class="work__media">
+            <img src="assets/works-02.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__overlay" aria-hidden="true"><span class="work__no">Case 02</span><span class="work__cat">ケイズモビリティ 様</span></figcaption>
+          </figure>
+          <div class="work__body">
+            <p class="work__tags"><span>社内アプリ開発・AI顧問</span><span>属人化された業務体質に悩む企業</span></p>
+            <h3 class="work__title">ケイズモビリティ 様</h3>
+            <dl class="work__detail">
+              <div><dt>課題</dt><dd>業務の進め方が個人の経験に頼りがちで、社内で情報やノウハウを共有しづらい状態でした。</dd></div>
+              <div><dt>成果</dt><dd>マニュアルや業務フローを社内で共有・更新するためのポータルアプリを構築し、情報共有や教育、引き継ぎがスムーズに。シフト作成も自動化し、作業時間を大幅に削減することで経営体制を健全化しました。</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <figure class="work__media">
+            <img src="assets/works-03.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__overlay" aria-hidden="true"><span class="work__no">Case 03</span><span class="work__cat">FUJINO GROUP 様</span></figcaption>
+          </figure>
+          <div class="work__body">
+            <p class="work__tags"><span>AI研修・AI導入支援</span><span>AIの実務活用に踏み出したい企業</span></p>
+            <h3 class="work__title">FUJINO GROUP 様</h3>
+            <dl class="work__detail">
+              <div><dt>課題</dt><dd>社長自身がAIで壁打ちをするなど関心は高いものの、実際の社内業務にどう活かせばよいかが分からない状態でした。</dd></div>
+              <div><dt>成果</dt><dd>資料作成や数値分析、定期作業を自動化し、社内のAIリテラシーが向上。士業AIの活用で知識と選択肢が増え、リスクマネジメントが強化されるなど、「AIを実務で回せる会社」になりました。</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="work work--cta reveal" style="--d:1">
+          <figure class="work__media">
+            <img src="assets/works-04.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__overlay" aria-hidden="true"><span class="work__no">Contact</span><span class="work__cat">LINEで無料AI相談</span></figcaption>
+          </figure>
+          <div class="work__body">
+            <h3 class="work__title">「うちも同じ課題がある」と思ったら。</h3>
+            <p>完全無料・売り込みなし。御社の現場に置き換えて、一緒に考えます。</p>
+            <a href="#contact" class="btn btn--gold" data-line-cta>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+              LINEで無料AI相談
+            </a>
+          </div>
+        </article>
+      </div>
+      <p class="note">※ 写真はイメージです。</p>
+
+      <!-- OUR STANCE -->
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Our Stance</p>
+          <h3 class="block-title reveal" style="--d:1">数字より、変化の“構造”で語ります。</h3>
+          <p class="block-lead reveal" style="--d:2">「すごい成果」を盛るのではなく、業務の何がどう変わるかを丁寧にお見せします。</p>
+        </div>
+        <div class="cols-3">
+          <article class="col reveal"><h4 class="col__title">業種を選ばない対応幅</h4><p>建設・土木、運送・物流、多拠点企業、士業など、アナログ色の濃い現場まで幅広く対応してきました。</p></article>
+          <article class="col reveal" style="--d:1"><h4 class="col__title">誇張しない事例の見せ方</h4><p>「導入前 → 導入後」で、業務の流れがどう変わったか。再現できる変化の構造でお伝えします。</p></article>
+          <article class="col reveal" style="--d:2"><h4 class="col__title">経営者の隣で伴走</h4><p>外注先ではなく、共に考え、共に動き、共に成果を出すパートナーとして関わります。</p></article>
+        </div>
+      </div>
+
+      <!-- VOICE -->
+      <!-- [要確認] 実際のコメントは書面同意を得たものから掲載。現状は仮文言を置かない方針 -->
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Voice</p>
+          <h3 class="block-title reveal" style="--d:1">お客様の声</h3>
+          <p class="block-lead reveal" style="--d:2">導入企業様からのコメントは、ご了承をいただいたものから順次掲載してまいります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 Process（導入の流れ） ============ -->
+  <section class="section section--alt" id="process">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="eyebrow__num">04</span>Process</p>
+        <h2 class="sec-title reveal" style="--d:1">「何から始めればいいか分からない」<span class="nw">で大丈夫</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="step__num" aria-hidden="true">01</span><p class="step__label">STEP 1</p><h3>LINEで無料AI相談</h3><p>まずは現状と悩みをお聞きします。準備は不要。決まっていなくて大丈夫です。</p></li>
+        <li class="step reveal" style="--d:1"><span class="step__num" aria-hidden="true">02</span><p class="step__label">STEP 2</p><h3>課題整理と提案</h3><p>どこからAI化すべきか、優先順位と費用感をご提案します。</p></li>
+        <li class="step reveal" style="--d:2"><span class="step__num" aria-hidden="true">03</span><p class="step__label">STEP 3</p><h3>設計・実装</h3><p>御社の現場に合わせて設計・構築。無理のない範囲から進めます。</p></li>
+        <li class="step reveal" style="--d:3"><span class="step__num" aria-hidden="true">04</span><p class="step__label">STEP 4</p><h3>定着まで伴走</h3><p>使い続けられる状態へ。現場が自走できるところまで一緒に走ります。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="container split faq-layout">
+      <div class="sec-head">
+        <p class="eyebrow reveal">FAQ</p>
+        <h2 class="sec-title reveal" style="--d:1">よくあるご質問</h2>
+      </div>
+      <div>
+        <div class="faq-group">
+          <div class="faq reveal">
+            <details><summary><span class="faq__q">Q.</span>AIに詳しくないと使えませんか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>いいえ。むしろ「詳しくない」前提で、経営者の言葉に合わせて進めます。専門用語は使いません。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>どのくらいの期間で効果が出ますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>コーチングは3ヶ月を基本に、現場で使える状態を目指します。内容によって最適な進め方をご提案します。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>中小企業でも導入できますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。紙・Excel・口頭中心の現場こそ、AIで変えられる伸びしろが大きい領域です。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>まず何から相談すればいいですか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>決まっていなくて大丈夫です。LINEで現状を聞かせてください。こちらで論点を整理します。</p></div></details>
+          </div>
+        </div>
+        <div class="faq-group">
+          <h3 class="faq-group__title reveal">AI研修・教育／AI社員構築について</h3>
+          <div class="faq reveal">
+            <details><summary><span class="faq__q">Q.</span>AIの知識がなくても受けられますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。むしろ知識ゼロを前提に、経営者の言葉で進めます。専門用語は使いません。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>3ヶ月が終わったらどうなりますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>自社内でAIを使い続けられる状態を目指します。必要に応じて、その後の伴走もご相談いただけます。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>現場の人数が少なくても効果がありますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。少人数だからこそ、一人あたりの業務をAIで軽くする効果が大きい場面が多くあります。</p></div></details>
+            <details><summary><span class="faq__q">Q.</span>他のサービスとどう違いますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>研修や導入で終わらず、現場のルール・テンプレートまで一緒に作り、定着まで伴走する点が特徴です。</p></div></details>
+          </div>
+        </div>
+        <div class="faq-cta reveal">
+          <p><strong>どのメニューが合うか、相談しませんか？</strong>完全無料・売り込みなし。現状をお聞きして、最適な進め方を一緒に整理します。</p>
+          <a href="#contact" class="btn btn--ghost" data-line-cta>LINEで無料AI相談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 Company（代表メッセージ／設立背景／会社情報） ============ -->
+  <section class="section section--alt" id="company">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="eyebrow__num">05</span>Company</p>
+        <h2 class="sec-title reveal" style="--d:1">会社概要</h2>
+      </div>
+
+      <div class="company-row split">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Message</p>
+          <h3 class="block-title reveal" style="--d:1">代表メッセージ</h3>
+        </div>
+        <div class="message reveal" style="--d:1">
+          <p>「AIを入れたが、現場が使ってくれない」——そんな声を、何度も聞いてきました。</p>
+          <p>便利なツールは、世の中にあふれています。けれど、現場に定着しなければ意味がありません。大切なのは、その会社の業務に合わせて設計し、使い続けられる状態まで伴走すること。私たちはそこに、いちばん力を注ぎます。</p>
+          <p>人手不足が進むこれからの時代、AIは「人を減らす道具」ではなく「人の力を引き出す相棒」になれると信じています。経営者の隣に立ち、共に考え、共に動く。それが私たちの役割です。</p>
+          <p>まずは気軽に、現状をお聞かせください。御社にとって何が一番効くのか、一緒に整理させてください。</p>
+          <img src="assets/signature.png" alt="田中 勇気 サイン" class="message__sign" width="900" height="308" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <div class="company-row split">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Why AI Linqs</p>
+          <h3 class="block-title reveal" style="--d:1">なぜ、私たちが必要だと考えるのか</h3>
+        </div>
+        <div class="prose reveal" style="--d:1">
+          <p>日本の中小企業は、いま大きな構造的課題に直面しています。</p>
+          <ul>
+            <li>2030年には、644万人の労働力不足が見込まれている <span class="todo">[要確認：出典の明記]</span></li>
+            <li>AI活用は大企業で進む一方、中小企業では遅れ、その格差が広がりつつある <span class="todo">[要確認：数値・出典]</span></li>
+            <li>「何から始めればいいか分からない」——伴走してくれる存在が、圧倒的に足りていない</li>
+          </ul>
+          <p>この“空白地帯”にこそ、私たちの役割があります。研修だけ・導入だけで終わらせず、現場に入り込み、定着まで共に走る。中小企業の現場から、人とAIのハイブリッド経営を当たり前にしていく——それがAI Linqsの挑戦です。</p>
+        </div>
+      </div>
+
+      <div class="company-row split">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Company</p>
+          <h3 class="block-title reveal" style="--d:1">会社情報</h3>
+        </div>
+        <!-- [要確認] 会社概要（運営法人=アイリンクス株式会社／設立年・法人格の最終確認） -->
+        <dl class="info reveal" style="--d:1">
+          <div><dt>ブランド名</dt><dd>AI Linqs（アイリンクス）</dd></div>
+          <div><dt>運営会社</dt><dd>アイリンクス株式会社</dd></div>
+          <div><dt>代表者</dt><dd>田中 勇気（代表取締役）</dd></div>
+          <div><dt>事業内容</dt><dd>AI導入支援（AI研修・教育／AI社員・AI部署長構築／社内アプリ・業務システム制作 ほか）</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 Contact（フルワイドCTA） ============ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="eyebrow reveal"><span class="eyebrow__num">06</span>Contact</p>
+      <h2 class="contact__title reveal" style="--d:1">まずは、LINEで<br>無料相談から。</h2>
+      <p class="contact__lead reveal" style="--d:2">完全無料・売り込みなし。自社のAI化ポイントを、一緒に整理しましょう。</p>
+      <div class="contact__cta reveal" style="--d:3">
+        <a href="#line" class="btn btn--gold btn--lg" data-line-cta>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+          LINEで無料AI相談
+        </a>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <p class="sub-eyebrow reveal">Step</p>
+          <h3 class="block-title reveal" style="--d:1">無料相談で分かること</h3>
+          <p class="block-lead reveal" style="--d:2">難しい準備は要りません。LINEで現状をお聞きし、自社のAI化ポイント・優先順位・費用感を一緒に整理します。</p>
+        </div>
+        <div class="cols-3">
+          <article class="col reveal"><p class="col__tag">01</p><h4 class="col__title">自社のAI化余地</h4><p>どこにAIを使う余地があるか、現状からお伝えします。</p></article>
+          <article class="col reveal" style="--d:1"><p class="col__tag">02</p><h4 class="col__title">優先順位</h4><p>何から始めると効果が高いか、順番を整理します。</p></article>
+          <article class="col reveal" style="--d:2"><p class="col__tag">03</p><h4 class="col__title">費用感</h4><p>どのくらいの規模・費用になりそうか、目安をお伝えします。</p></article>
+        </div>
+      </div>
+
+      <div class="line-card reveal" id="line">
+        <div class="line-card__qr"><img src="assets/line-qr.png" alt="LINE友だち追加QRコード" width="140" height="140" loading="lazy" decoding="async"></div>
+        <h3>LINEで友だち追加して相談</h3>
+        <p>完全無料・売り込みなし。気軽にメッセージを送ってください。</p>
+        <a href="#line" class="btn btn--gold btn--lg" data-line-cta>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.5 7.4 8.3 8.1.3.07.76.22.87.5.1.26.07.66.03.92l-.14.85c-.04.26-.2 1 .9.55s5.9-3.48 8.06-5.96C21.4 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2Z"/></svg>
+          LINEで無料AI相談
+        </a>
+        <small>※ ボタンが開かない場合は、上のQRコードを読み取ってください。</small>
+      </div>
+      <p class="contact__privacy">いただいたご相談内容は、ご提案以外の目的では利用しません。詳しくは<a href="#privacy">プライバシーポリシー</a>をご覧ください。</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ フッター ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="#top" class="logo" aria-label="AI Linqs トップへ"><span class="logo__ai">AI</span> Linqs</a>
+        <p class="footer__desc">中小企業のためのAI導入パートナー。<br>研修から定着まで、経営者と“共に”。</p>
+      </div>
+      <div>
+        <p><strong>AI Linqs</strong>（運営：アイリンクス株式会社）</p>
+        <p>〒651-0094 兵庫県神戸市中央区琴ノ緒町7-11-1</p>
+      </div>
+      <nav class="footer__nav" aria-label="フッターナビゲーション">
+        <ul>
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#works">実績</a></li>
+          <li><a href="#company">会社概要</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#privacy">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copy">&copy; 2026 アイリンクス株式会社 / AI Linqs</p>
+  </div>
+</footer>
+
+<!-- ============ プライバシーポリシー（v1 privacy.html 全文） ============ -->
+<dialog class="modal" id="privacy" aria-labelledby="privacyTitle">
+  <div class="modal__inner">
+    <div class="modal__head">
+      <div>
+        <p class="sub-eyebrow">Privacy Policy</p>
+        <h2 id="privacyTitle">プライバシーポリシー</h2>
+      </div>
+      <form method="dialog"><button class="btn btn--ghost modal__close" type="submit">閉じる</button></form>
+    </div>
+    <p>アイリンクス株式会社（以下「当社」といい、サービスブランド「AI Linqs」を運営します）は、お客様の個人情報を適切に取り扱うことが社会的責務であると考え、以下のとおりプライバシーポリシーを定めます。</p>
+
+    <h3>1. 収集する個人情報</h3>
+    <p>当社は、お問い合わせ・ご相談・サービス提供にあたり、お名前、会社名、電話番号、メールアドレス、LINEアカウント情報、その他お客様がご提供する情報を取得することがあります。</p>
+
+    <h3>2. 利用目的</h3>
+    <ul>
+      <li>お問い合わせ・ご相談への対応のため</li>
+      <li>サービスのご提案・提供・運用のため</li>
+      <li>お客様への必要なご連絡のため</li>
+      <li>サービス改善およびご案内のため</li>
+    </ul>
+
+    <h3>3. 第三者提供</h3>
+    <p>当社は、法令に基づく場合を除き、あらかじめお客様の同意を得ることなく個人情報を第三者に提供しません。</p>
+
+    <h3>4. 業務委託</h3>
+    <p>利用目的の達成に必要な範囲で、個人情報の取り扱いを外部に委託する場合があります。その際は、委託先に対して適切な監督を行います。</p>
+
+    <h3>5. 安全管理措置</h3>
+    <p>当社は、個人情報の漏えい・滅失・毀損の防止その他の安全管理のために、必要かつ適切な措置を講じます。</p>
+
+    <h3>6. 開示・訂正・削除等の手続き</h3>
+    <p>お客様ご本人からの個人情報の開示・訂正・利用停止・削除等のご請求に対し、法令に基づき適切に対応します。下記のお問い合わせ窓口までご連絡ください。</p>
+
+    <h3>7. Cookie・アクセス解析ツールについて</h3>
+    <p>当社のサイトでは、利便性向上やアクセス状況の把握のためにCookieおよびアクセス解析ツールを利用する場合があります。ブラウザの設定によりCookieの利用を拒否することができますが、その場合、一部の機能がご利用いただけないことがあります。</p>
+
+    <h3>8. お問い合わせ窓口</h3>
+    <p>アイリンクス株式会社（AI Linqs）<br>〒651-0094 兵庫県神戸市中央区琴ノ緒町7-11-1</p>
+
+    <h3>9. 改定について</h3>
+    <p>当社は、本ポリシーの内容を必要に応じて改定することがあります。改定後の内容は本ページに掲載した時点から効力を生じます。</p>
+
+    <p class="modal__updated">制定日：2026年7月6日　／　最終更新日：2026年7月6日</p>
+  </div>
+</dialog>
+
+<div class="test-badge" id="testBadge" hidden>TEST · v2</div>
+
+<script>
+/* ============================================================
+   AI Linqs v2  — 依存なし（バニラJS）
+   ============================================================ */
+(function () {
+  'use strict';
+  var d = document;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- LINE公式 友だち追加URLを全CTAに反映（JS無効時は #contact のQRへ） ---- */
+  var LINE_URL = 'https://lin.ee/XFEkgJS';
+  d.querySelectorAll('[data-line-cta]').forEach(function (a) {
+    a.setAttribute('href', LINE_URL);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+  });
+
+  /* ---- ヒーロー：8秒ごとにクロスフェード＋Ken Burns＋コピー切替 ---- */
+  var hero = d.getElementById('top');
+  var slides = Array.prototype.slice.call(hero.querySelectorAll('.slide'));
+  var copies = Array.prototype.slice.call(hero.querySelectorAll('.copy'));
+  var numEl = d.getElementById('heroNum');
+  var labelEl = d.getElementById('heroLabel');
+  var bar = d.getElementById('heroBar');
+  var pauseBtn = d.getElementById('heroPause');
+  var cur = 0;
+
+  // 2枚目以降は初期表示が終わってから読み込む
+  window.addEventListener('load', function () {
+    slides.forEach(function (s) {
+      var img = s.querySelector('.slide__img');
+      if (!img.getAttribute('data-img')) return;
+      img.style.setProperty('--img', 'url("' + img.getAttribute('data-img') + '")');
+      img.style.setProperty('--img-sp', 'url("' + img.getAttribute('data-img-sp') + '")');
+    });
+  });
+
+  function runBar() {
+    bar.classList.remove('is-running');
+    void bar.offsetWidth; // アニメーションを先頭から再生
+    bar.classList.add('is-running');
+  }
+  function go(next) {
+    var old = cur;
+    slides[old].classList.remove('is-active');
+    slides[old].classList.add('is-prev');     // 新しい写真がフェードインし終わるまで下に残す
+    copies[old].classList.remove('is-active');
+    cur = next;
+    slides[cur].classList.remove('is-prev');
+    slides[cur].classList.add('is-active');
+    copies[cur].classList.add('is-active');
+    numEl.textContent = ('0' + (cur + 1)).slice(-2);
+    labelEl.textContent = copies[cur].getAttribute('data-label');
+    setTimeout(function () { if (old !== cur) slides[old].classList.remove('is-prev'); }, 1800);
+    runBar();
+  }
+  // 8秒の進捗バーが終わったら次へ（一時停止＝バーも止まる）
+  bar.addEventListener('animationend', function () { go((cur + 1) % slides.length); });
+  runBar();
+
+  pauseBtn.addEventListener('click', function () {
+    var paused = !hero.classList.contains('is-paused');
+    hero.classList.toggle('is-paused', paused);
+    pauseBtn.setAttribute('aria-label', paused ? 'スライドショーを再生' : 'スライドショーを一時停止');
+  });
+  // 画面外にある間は止めて負荷を下げる
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      hero.classList.toggle('is-offscreen', !entries[0].isIntersecting);
+    }).observe(hero);
+  }
+
+  /* ---- ヘッダー：スクロールで背景／アクティブ項目（ゴールド） ---- */
+  var header = d.getElementById('header');
+  var spyLinks = Array.prototype.slice.call(d.querySelectorAll('[data-spy]'));
+  var ids = [];
+  spyLinks.forEach(function (a) { var id = a.getAttribute('href'); if (ids.indexOf(id) < 0) ids.push(id); });
+  var targets = ids.map(function (id) { return d.querySelector(id); });
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var vh = window.innerHeight;
+    header.classList.toggle('is-scrolled', window.scrollY > vh * 0.5);
+    var active = null;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= vh * 0.4) active = ids[i]; });
+    if (vh + window.scrollY >= d.documentElement.scrollHeight - 4) active = ids[ids.length - 1];
+    spyLinks.forEach(function (a) {
+      var on = a.getAttribute('href') === active;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---- SP：ハンバーガーメニュー ---- */
+  var burger = d.getElementById('burger');
+  var menu = d.getElementById('spMenu');
+  function setMenu(open) {
+    menu.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    d.body.classList.toggle('is-locked', open);
+  }
+  burger.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1080) setMenu(false); });
+
+  /* ---- スクロールでフェードインアップ（IntersectionObserver） ---- */
+  var reveals = d.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- プライバシーポリシー（モーダル） ---- */
+  var dlg = d.getElementById('privacy');
+  function openPrivacy(e) {
+    if (typeof dlg.showModal !== 'function') return;
+    if (e) e.preventDefault();
+    dlg.showModal();
+  }
+  d.querySelectorAll('a[href="#privacy"]').forEach(function (a) { a.addEventListener('click', openPrivacy); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  if (location.hash === '#privacy') openPrivacy();
+
+  /* ---- テスト版バッジ（GitHub Pages／ローカルのみ。本番ドメインでは出ない） ---- */
+  if (/\.github\.io$/.test(location.hostname) || location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    d.getElementById('testBadge').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
