@@ -29,7 +29,8 @@ v1（`ai-linqs-site-pages` コミット `759e474`）の7ページの文言を、
 
 | ファイル | 出どころ |
 |---|---|
-| `hero-01〜04.jpg`（PC 2560×1440）／`hero-01〜04-sp.jpg`（SP 1080×1920） | v1 背景と同じ Adobe Stock ライセンス版（`../ai-linqs-site/assets/背景/`）から切り出し。01=bg-tech／02=bg-people／03=bg-connect／04=bg-city |
+| `hero-01-kobe.jpg`（PC 2560×1440）／`hero-01-kobe-sp.jpg`（SP 1080×1920） | Adobe Stock 455397400「摩耶山から見た神戸市の夜景」（通常ライセンス・4000×2667）から切り出し。灯りの色を残すため CSS の filter は他の3枚より弱め |
+| `hero-02〜04.jpg`（PC 2560×1440）／`hero-02〜04-sp.jpg`（SP 1080×1920） | v1 背景と同じ Adobe Stock ライセンス版（`../ai-linqs-site/assets/背景/`）から切り出し。02=bg-people／03=bg-connect／04=bg-city |
 | `works-01〜04.jpg`（1200×900） | 同じ4枚から別の画角で切り出し（サイト上に「写真はイメージです」と表記） |
 | `line-qr.png` `signature.png` | v1 から複製 |
 

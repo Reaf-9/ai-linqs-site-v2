@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/hero-01.jpg" media="(min-width: 768px), (orientation: landscape)">
-<link rel="preload" as="image" href="assets/hero-01-sp.jpg" media="(max-width: 767px) and (orientation: portrait)">
+<link rel="preload" as="image" href="assets/hero-01-kobe.jpg" media="(min-width: 768px), (orientation: landscape)">
+<link rel="preload" as="image" href="assets/hero-01-kobe-sp.jpg" media="(max-width: 767px) and (orientation: portrait)">
 <style>
 /* ============================================================
    AI Linqs v2 — ダークテーマ 1ページ構成
@@ -109,7 +109,8 @@ strong{font-weight:500;color:var(--text)}
 .slide__img{position:absolute;inset:0;background:var(--img) center/cover no-repeat;filter:saturate(.35) brightness(.62) contrast(1.05);will-change:transform}
 @media (max-width:767px) and (orientation:portrait){.slide__img{background-image:var(--img-sp)}}
 .slide.is-active .slide__img,.slide.is-prev .slide__img{animation:kenburns 10s linear forwards}
-.slide[data-kb="1"] .slide__img{transform-origin:35% 60%}
+/* 1枚目＝神戸の夜景：街の灯りの色を残すため、色の落とし方を他より弱める */
+.slide[data-kb="1"] .slide__img{transform-origin:50% 60%;filter:saturate(.8) brightness(.78) contrast(1.05)}
 .slide[data-kb="2"] .slide__img{transform-origin:65% 40%}
 .slide[data-kb="3"] .slide__img{transform-origin:60% 55%}
 .slide[data-kb="4"] .slide__img{transform-origin:40% 35%}
@@ -412,7 +413,7 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
   <!-- ============ ヒーロー（4枚・8秒ごとにクロスフェード＋Ken Burns） ============ -->
   <section class="hero" id="top" aria-label="メインビジュアル">
     <div class="hero__slides" aria-hidden="true">
-      <div class="slide is-active" data-kb="1"><div class="slide__img" style="--img:url('assets/hero-01.jpg');--img-sp:url('assets/hero-01-sp.jpg')"></div></div>
+      <div class="slide is-active" data-kb="1"><div class="slide__img" style="--img:url('assets/hero-01-kobe.jpg');--img-sp:url('assets/hero-01-kobe-sp.jpg')"></div></div>
       <div class="slide" data-kb="2"><div class="slide__img" data-img="assets/hero-02.jpg" data-img-sp="assets/hero-02-sp.jpg"></div></div>
       <div class="slide" data-kb="3"><div class="slide__img" data-img="assets/hero-03.jpg" data-img-sp="assets/hero-03-sp.jpg"></div></div>
       <div class="slide" data-kb="4"><div class="slide__img" data-img="assets/hero-04.jpg" data-img-sp="assets/hero-04-sp.jpg"></div></div>
