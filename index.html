@@ -18,6 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/hero-01-kobe.jpg" media="(min-width: 768px), (orientation: landscape)">
 <link rel="preload" as="image" href="assets/hero-01-kobe-sp.jpg" media="(max-width: 767px) and (orientation: portrait)">
+<link rel="preload" as="image" href="assets/seq/pc/f0001.jpg" media="(min-width: 768px)">
+<link rel="preload" as="image" href="assets/seq/sp/f0001.jpg" media="(max-width: 767px)">
 <style>
 /* ============================================================
    AI Linqs v2 — ダークテーマ 1ページ構成
@@ -100,41 +102,25 @@ strong{font-weight:500;color:var(--text)}
 .sp-link:hover,.sp-link.is-active{color:var(--gold)}
 .sp-menu .btn{margin-top:32px}
 
-/* ---------- ヒーロー ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--bg);isolation:isolate}
-.hero__slides{position:absolute;inset:0;z-index:-2}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
-.slide.is-prev{opacity:1;z-index:1;transition:none}
-.slide.is-active{opacity:1;z-index:2}
-.slide__img{position:absolute;inset:0;background:var(--img) center/cover no-repeat;filter:saturate(.35) brightness(.62) contrast(1.05);will-change:transform}
-@media (max-width:767px) and (orientation:portrait){.slide__img{background-image:var(--img-sp)}}
-.slide.is-active .slide__img,.slide.is-prev .slide__img{animation:kenburns 10s linear forwards}
-/* 1枚目＝神戸の夜景：街の灯りの色を残すため、色の落とし方を他より弱める */
-.slide[data-kb="1"] .slide__img{transform-origin:50% 60%;filter:saturate(.8) brightness(.78) contrast(1.05)}
-.slide[data-kb="2"] .slide__img{transform-origin:65% 40%}
-.slide[data-kb="3"] .slide__img{transform-origin:60% 55%}
-.slide[data-kb="4"] .slide__img{transform-origin:40% 35%}
-@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
-.hero__shade{position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(to top,rgba(14,14,14,1) 0%,rgba(14,14,14,.62) 36%,rgba(14,14,14,.18) 68%,rgba(14,14,14,.5) 100%),
-  linear-gradient(to right,rgba(14,14,14,.72) 0%,rgba(14,14,14,0) 62%)}
+/* ---------- 世界（固定背景：連番画像をスクロールで進める飛行映像） ---------- */
+.world{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.world__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease}
+.world.is-ready .world__canvas{opacity:1}
+/* 入口の1枚（神戸の夜景）。最初のスクロールで映像に溶ける */
+.world__poster{position:absolute;inset:0;background:url('assets/hero-01-kobe.jpg') center/cover no-repeat;filter:saturate(.8) brightness(.78) contrast(1.05);will-change:opacity,transform}
+@media (max-width:767px) and (orientation:portrait){.world__poster{background-image:url('assets/hero-01-kobe-sp.jpg')}}
+
+/* ---------- ヒーロー（世界の入口） ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden}
+.hero__shade{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(to top,rgba(14,14,14,.96) 0%,rgba(14,14,14,.55) 36%,rgba(14,14,14,.12) 68%,rgba(14,14,14,.45) 100%),
+  linear-gradient(to right,rgba(14,14,14,.7) 0%,rgba(14,14,14,0) 62%)}
 .hero__content{position:absolute;left:0;right:0;bottom:clamp(108px,15vh,150px)}
-.hero__meta{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.14em;line-height:1;color:var(--muted);font-variant-numeric:tabular-nums}
-.hero__num{color:var(--gold)}
-.hero__progress{position:relative;width:56px;height:1px;background:rgba(236,232,223,.2);overflow:hidden}
-.hero__progress span{position:absolute;inset:0;background:var(--gold);transform-origin:left center;transform:scaleX(0)}
-.hero__progress span.is-running{animation:heroBar 8s linear forwards}
-@keyframes heroBar{to{transform:scaleX(1)}}
-.hero.is-paused .slide__img,.hero.is-paused .hero__progress span,
-.hero.is-offscreen .slide__img,.hero.is-offscreen .hero__progress span{animation-play-state:paused}
-.hero__place{margin-top:18px;font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.hero__place{font-size:12px;letter-spacing:.14em;color:var(--muted)}
 .hero__place .sep{margin-inline:.9em;color:var(--gold)}
 .hero__city{white-space:nowrap}
-.hero__copies{display:grid;margin-top:22px;max-width:46rem}
-.copy{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
-.copy.is-active{opacity:1;transform:none;transition-delay:.5s}
-.copy__title{font-size:clamp(1.9rem,5.2vw,4.4rem);font-weight:500;line-height:1.3;letter-spacing:-.02em}
-.copy__sub{margin-top:22px;max-width:36em;font-size:clamp(14px,1.1vw,16px);line-height:2;color:var(--muted)}
+.hero__title{margin-top:22px;max-width:46rem;font-size:clamp(1.9rem,5.2vw,4.4rem);line-height:1.3}
+.hero__sub{margin-top:22px;max-width:36em;font-size:clamp(14px,1.1vw,16px);line-height:2;color:var(--muted)}
 .hero__chips{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
 .hero__chips li{font-size:12px;letter-spacing:.06em;line-height:1;padding:8px 14px;border:1px solid rgba(236,232,223,.22);border-radius:999px;color:rgba(236,232,223,.86);background:rgba(14,14,14,.3)}
 .hero__scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;line-height:1;color:var(--muted);transition:color var(--t)}
@@ -142,15 +128,20 @@ strong{font-weight:500;color:var(--text)}
 .hero__scroll i{position:relative;display:block;width:1px;height:52px;background:rgba(236,232,223,.16);overflow:hidden}
 .hero__scroll i::after{content:"";position:absolute;inset:0;background:var(--gold);animation:scrollLine 2.4s ease-in-out infinite}
 @keyframes scrollLine{0%{transform:translateY(-100%)}55%{transform:translateY(0)}100%{transform:translateY(100%)}}
-.hero__pause{position:absolute;right:var(--gutter);bottom:24px;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:999px;border:1px solid rgba(236,232,223,.22);background:rgba(14,14,14,.35);color:var(--text);cursor:pointer;transition:border-color var(--t),color var(--t)}
-.hero__pause:hover{border-color:var(--gold);color:var(--gold)}
-.hero__pause svg{width:14px;height:14px}
-.hero__pause .i-play,.hero.is-paused .hero__pause .i-pause{display:none}
-.hero.is-paused .hero__pause .i-play{display:block}
+
+/* ---------- 章（世界の中に浮かぶコピー。背景は透けたまま） ---------- */
+.chapter{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:clamp(96px,14vh,160px)}
+.chapter__shade{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(to right,rgba(14,14,14,.72) 0%,rgba(14,14,14,.3) 50%,rgba(14,14,14,0) 100%),
+  linear-gradient(to bottom,rgba(14,14,14,.6) 0%,rgba(14,14,14,0) 32%,rgba(14,14,14,0) 68%,rgba(14,14,14,.6) 100%)}
+.chapter .container{position:relative}
+.chapter__inner{max-width:46rem}
+.chapter__title{margin-top:24px;font-size:clamp(1.9rem,5vw,4.2rem);line-height:1.3}
+.chapter__lead{margin-top:26px;font-size:clamp(14px,1.1vw,16px);line-height:2.1;color:var(--muted)}
 
 /* ---------- セクション共通 ---------- */
-.section{position:relative;padding-block:clamp(96px,13vw,168px)}
-.section--alt{background:var(--bg-2)}
+.section{position:relative;padding-block:clamp(96px,13vw,168px);background:rgba(14,14,14,.88)}
+.section--alt{background:rgba(20,20,20,.92)}
 .sec-head{display:grid;gap:20px;margin-bottom:clamp(56px,7vw,88px)}
 .eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1;text-transform:uppercase;color:var(--gold)}
 .eyebrow::after{content:"";width:40px;height:1px;background:currentColor;opacity:.55}
@@ -300,7 +291,7 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
 @media (max-width:600px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* ---------- Contact ---------- */
-.contact{position:relative;padding-block:clamp(112px,15vw,200px);text-align:center;border-top:1px solid var(--line);background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(201,169,97,.11),rgba(201,169,97,0) 70%),var(--bg-2)}
+.contact{position:relative;padding-block:clamp(112px,15vw,200px);text-align:center;border-top:1px solid var(--line);background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(201,169,97,.11),rgba(201,169,97,0) 70%),rgba(20,20,20,.94)}
 .contact .eyebrow{justify-content:center}
 .contact .eyebrow::before{content:"";width:40px;height:1px;background:currentColor;opacity:.55}
 .contact__title{margin-top:28px;font-size:clamp(2rem,5vw,4rem);line-height:1.35}
@@ -318,7 +309,7 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
 .contact__privacy a:hover,.link:hover{color:var(--gold-hi)}
 
 /* ---------- フッター ---------- */
-.footer{padding-block:72px 32px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.footer{padding-block:72px 32px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);background:rgba(14,14,14,.97)}
 .footer__grid{display:grid;grid-template-columns:1.1fr 1fr auto;gap:40px}
 @media (max-width:860px){.footer__grid{grid-template-columns:1fr}}
 .footer .logo{font-size:18px}
@@ -360,13 +351,19 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none;transition:border-color var(--t)}
-  .slide__img{animation:none!important}
   .hero__scroll i::after{animation:none}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#philosophy">本文へスキップ</a>
+
+<!-- ============ 世界：固定背景。連番画像（assets/seq/）をスクロール位置で進める ============ -->
+<div class="world" id="world" aria-hidden="true">
+  <canvas class="world__canvas" id="worldCanvas"></canvas>
+  <div class="world__poster" id="worldPoster"></div>
+</div>
+
 
 <!-- ============ ヘッダー ============ -->
 <header class="site-header" id="header">
@@ -410,51 +407,26 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
 
 <main>
 
-  <!-- ============ ヒーロー（4枚・8秒ごとにクロスフェード＋Ken Burns） ============ -->
+  <!-- ============ ヒーロー（入口の1枚。スクロールで映像の世界へ） ============ -->
   <section class="hero" id="top" aria-label="メインビジュアル">
-    <div class="hero__slides" aria-hidden="true">
-      <div class="slide is-active" data-kb="1"><div class="slide__img" style="--img:url('assets/hero-01-kobe.jpg');--img-sp:url('assets/hero-01-kobe-sp.jpg')"></div></div>
-      <div class="slide" data-kb="2"><div class="slide__img" data-img="assets/hero-02.jpg" data-img-sp="assets/hero-02-sp.jpg"></div></div>
-      <div class="slide" data-kb="3"><div class="slide__img" data-img="assets/hero-03.jpg" data-img-sp="assets/hero-03-sp.jpg"></div></div>
-      <div class="slide" data-kb="4"><div class="slide__img" data-img="assets/hero-04.jpg" data-img-sp="assets/hero-04-sp.jpg"></div></div>
-    </div>
     <div class="hero__shade" aria-hidden="true"></div>
-
     <div class="hero__content container">
-      <div class="hero__meta" aria-hidden="true">
-        <span><span class="hero__num" id="heroNum">01</span> / 04</span>
-        <span class="hero__progress"><span id="heroBar"></span></span>
-        <span id="heroLabel">AI LINQS</span>
-      </div>
-      <p class="hero__place">中小企業のための AI 導入パートナー<span class="hero__city"><span class="sep">—</span>KOBE, JAPAN</span></p>
-
-      <div class="hero__copies">
-        <div class="copy is-active" data-label="AI LINQS">
-          <h1 class="copy__title">人とAIの<br><span class="gold">ハイブリッド経営</span><br>を、当たり前に。</h1>
-          <p class="copy__sub">研修やツール導入で終わらせない。御社の現場に合わせてAIを設計し、使い続けられる状態まで“共に”伴走する。それがAI Linqsです。</p>
-        </div>
-        <div class="copy" data-label="CONNECTION">
-          <p class="copy__title">人の力を、<br>AIで引き出す。</p>
-          <p class="copy__sub">AIは、人を減らすための道具じゃない。<br>一人ひとりが本来の仕事に集中できるように。<br>人と人の“つながり”を、取り戻すために。</p>
-        </div>
-        <div class="copy" data-label="PARTNERSHIP">
-          <p class="copy__title">ともに考え、<br>ともに動く。</p>
-          <p class="copy__sub">外注先ではなく、伴走者として。<br>御社の現場に入り込み、課題を一緒に解く。<br>経営者の隣で、共に勝ちにいくパートナーへ。</p>
-        </div>
-        <div class="copy" data-label="THE FUTURE">
-          <p class="copy__title">テクノロジーが、<br>地域の未来を変える。</p>
-          <p class="copy__sub">人とAIのハイブリッド経営を、日本の新しいスタンダードに。<br>その一歩を、淡路から、御社から。</p>
-        </div>
-      </div>
-
-      <ul class="hero__chips"><li>完全無料</li><li>売り込みなし</li><li>LINEで気軽に</li></ul>
+      <p class="hero__place reveal">中小企業のための AI 導入パートナー<span class="hero__city"><span class="sep">—</span>KOBE, JAPAN</span></p>
+      <h1 class="hero__title reveal" style="--d:1">人とAIの<br><span class="gold">ハイブリッド経営</span><br>を、当たり前に。</h1>
+      <p class="hero__sub reveal" style="--d:2">研修やツール導入で終わらせない。御社の現場に合わせてAIを設計し、使い続けられる状態まで“共に”伴走する。それがAI Linqsです。</p>
+      <ul class="hero__chips reveal" style="--d:3"><li>完全無料</li><li>売り込みなし</li><li>LINEで気軽に</li></ul>
     </div>
+    <a href="#ch-connection" class="hero__scroll" aria-label="下へスクロール">scroll<i aria-hidden="true"></i></a>
+  </section>
 
-    <a href="#philosophy" class="hero__scroll" aria-label="下へスクロール">scroll<i aria-hidden="true"></i></a>
-    <button class="hero__pause" id="heroPause" type="button" aria-label="スライドショーを一時停止">
-      <svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M3 2h2.5v10H3zM8.5 2H11v10H8.5z"/></svg>
-      <svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M3.5 1.8 12 7l-8.5 5.2z"/></svg>
-    </button>
+  <!-- ============ 章①（CONNECTION）：映像 20% 地点 ============ -->
+  <section class="chapter" id="ch-connection" data-frame="0.2">
+    <div class="chapter__shade" aria-hidden="true"></div>
+    <div class="container"><div class="chapter__inner">
+      <p class="eyebrow reveal">Connection</p>
+      <h2 class="chapter__title reveal" style="--d:1">人の力を、<br>AIで引き出す。</h2>
+      <p class="chapter__lead reveal" style="--d:2">AIは、人を減らすための道具じゃない。<br>一人ひとりが本来の仕事に集中できるように。<br>人と人の“つながり”を、取り戻すために。</p>
+    </div></div>
   </section>
 
   <!-- ============ 01 Philosophy（ABOUT／Mission・Vision・Value） ============ -->
@@ -533,6 +505,16 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
         </article>
       </div>
     </div>
+  </section>
+
+  <!-- ============ 章②（PARTNERSHIP）：映像 50% 地点 ============ -->
+  <section class="chapter" id="ch-partnership" data-frame="0.5">
+    <div class="chapter__shade" aria-hidden="true"></div>
+    <div class="container"><div class="chapter__inner">
+      <p class="eyebrow reveal">Partnership</p>
+      <h2 class="chapter__title reveal" style="--d:1">ともに考え、<br>ともに動く。</h2>
+      <p class="chapter__lead reveal" style="--d:2">外注先ではなく、伴走者として。<br>御社の現場に入り込み、課題を一緒に解く。<br>経営者の隣で、共に勝ちにいくパートナーへ。</p>
+    </div></div>
   </section>
 
   <!-- ============ 02 Service（料金非表示） ============ -->
@@ -790,6 +772,16 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
     </div>
   </section>
 
+  <!-- ============ 章③（THE FUTURE）：映像 86% 地点（光の都市） ============ -->
+  <section class="chapter" id="ch-future" data-frame="0.86">
+    <div class="chapter__shade" aria-hidden="true"></div>
+    <div class="container"><div class="chapter__inner">
+      <p class="eyebrow reveal">The Future</p>
+      <h2 class="chapter__title reveal" style="--d:1">テクノロジーが、<br>地域の未来を変える。</h2>
+      <p class="chapter__lead reveal" style="--d:2">人とAIのハイブリッド経営を、日本の新しいスタンダードに。<br>その一歩を、淡路から、御社から。</p>
+    </div></div>
+  </section>
+
   <!-- ============ FAQ ============ -->
   <section class="section" id="faq">
     <div class="container split faq-layout">
@@ -1020,60 +1012,111 @@ a.lu:hover .lu__title,a.lu:hover .lu__arrow{color:var(--gold)}
     a.setAttribute('rel', 'noopener');
   });
 
-  /* ---- ヒーロー：8秒ごとにクロスフェード＋Ken Burns＋コピー切替 ---- */
+  /* ---- 世界：連番画像をスクロール位置で進める（Apple の製品ページと同じ方式） ---- */
   var hero = d.getElementById('top');
-  var slides = Array.prototype.slice.call(hero.querySelectorAll('.slide'));
-  var copies = Array.prototype.slice.call(hero.querySelectorAll('.copy'));
-  var numEl = d.getElementById('heroNum');
-  var labelEl = d.getElementById('heroLabel');
-  var bar = d.getElementById('heroBar');
-  var pauseBtn = d.getElementById('heroPause');
-  var cur = 0;
+  var world = d.getElementById('world');
+  var canvas = d.getElementById('worldCanvas');
+  var poster = d.getElementById('worldPoster');
+  var ctx = canvas.getContext('2d', { alpha: false });
+  var SEQ = { count: 150, dir: window.matchMedia('(max-width: 767px)').matches ? 'assets/seq/sp/' : 'assets/seq/pc/' };
+  var frames = new Array(SEQ.count);
+  var target = 0, shown = 0, drawn = -1, dirty = false, raf = 0;
+  var dpr = Math.min(1.5, window.devicePixelRatio || 1);
 
-  // 2枚目以降は初期表示が終わってから読み込む
-  window.addEventListener('load', function () {
-    slides.forEach(function (s) {
-      var img = s.querySelector('.slide__img');
-      if (!img.getAttribute('data-img')) return;
-      img.style.setProperty('--img', 'url("' + img.getAttribute('data-img') + '")');
-      img.style.setProperty('--img-sp', 'url("' + img.getAttribute('data-img-sp') + '")');
+  function src(i) { return SEQ.dir + 'f' + ('000' + (i + 1)).slice(-4) + '.jpg'; }
+  // 読み込み済みで最も近いフレーム
+  function nearest(f) {
+    var r = Math.round(f);
+    if (frames[r]) return r;
+    for (var k = 1; k < SEQ.count; k++) {
+      if (r - k >= 0 && frames[r - k]) return r - k;
+      if (r + k < SEQ.count && frames[r + k]) return r + k;
+    }
+    return -1;
+  }
+  // 粗い間隔 → 細かい間隔の順に読み込む（最初の1枚は最優先）
+  var order = [];
+  [16, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < SEQ.count; i += st) if (order.indexOf(i) < 0) order.push(i); });
+  var qi = 0, inflight = 0;
+  function pump() {
+    while (inflight < 4 && qi < order.length) {
+      (function (i) {
+        if (frames[i]) return;
+        inflight++;
+        var im = new Image();
+        im.onload = im.onerror = function () {
+          inflight--;
+          if (im.naturalWidth) {
+            frames[i] = im;
+            if (i === 0) world.classList.add('is-ready');
+            if (Math.abs(i - shown) < 8) dirty = true;
+            schedule();
+          }
+          pump();
+        };
+        im.src = src(i);
+      })(order[qi++]);
+    }
+  }
+
+  // スクロール位置 → 映像の進み具合。data-frame の要素が画面中央に来た時にその値になる
+  var anchors = [], maxY = 1;
+  function calcAnchors() {
+    var vh = window.innerHeight;
+    maxY = Math.max(1, d.documentElement.scrollHeight - vh);
+    anchors = [{ y: 0, p: 0 }];
+    d.querySelectorAll('[data-frame]').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      anchors.push({ y: r.top + window.scrollY + r.height / 2 - vh / 2, p: parseFloat(el.getAttribute('data-frame')) });
     });
-  });
+    anchors.push({ y: maxY, p: 1 });
+    anchors.sort(function (a, b) { return a.y - b.y; });
+  }
+  function progressAt(y) {
+    for (var i = 1; i < anchors.length; i++) {
+      if (y <= anchors[i].y) {
+        var a = anchors[i - 1], b = anchors[i];
+        var t = (y - a.y) / Math.max(1, b.y - a.y);
+        return a.p + (b.p - a.p) * Math.min(1, Math.max(0, t));
+      }
+    }
+    return 1;
+  }
 
-  function runBar() {
-    bar.classList.remove('is-running');
-    void bar.offsetWidth; // アニメーションを先頭から再生
-    bar.classList.add('is-running');
+  function draw() {
+    var i = nearest(shown);
+    if (i < 0 || (i === drawn && !dirty)) return;
+    var im = frames[i], cw = canvas.width, ch = canvas.height;
+    var s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
+    var w = im.naturalWidth * s, h = im.naturalHeight * s;
+    ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
+    drawn = i; dirty = false;
   }
-  function go(next) {
-    var old = cur;
-    slides[old].classList.remove('is-active');
-    slides[old].classList.add('is-prev');     // 新しい写真がフェードインし終わるまで下に残す
-    copies[old].classList.remove('is-active');
-    cur = next;
-    slides[cur].classList.remove('is-prev');
-    slides[cur].classList.add('is-active');
-    copies[cur].classList.add('is-active');
-    numEl.textContent = ('0' + (cur + 1)).slice(-2);
-    labelEl.textContent = copies[cur].getAttribute('data-label');
-    setTimeout(function () { if (old !== cur) slides[old].classList.remove('is-prev'); }, 1800);
-    runBar();
+  function tick() {
+    raf = 0;
+    var y = window.scrollY;
+    target = progressAt(y) * (SEQ.count - 1);
+    // 入口の1枚は最初の 70vh で映像に溶ける（少しだけ寄る）
+    var p = Math.min(1, y / (window.innerHeight * 0.7));
+    poster.style.opacity = (1 - p).toFixed(3);
+    poster.style.transform = 'scale(' + (1 + p * 0.08).toFixed(4) + ')';
+    // なめらかに追従（reduced-motion では即時）
+    shown = reduce ? target : shown + (target - shown) * 0.18;
+    if (Math.abs(target - shown) < 0.02) shown = target;
+    draw();
+    if (shown !== target) schedule();
   }
-  // 8秒の進捗バーが終わったら次へ（一時停止＝バーも止まる）
-  bar.addEventListener('animationend', function () { go((cur + 1) % slides.length); });
-  runBar();
-
-  pauseBtn.addEventListener('click', function () {
-    var paused = !hero.classList.contains('is-paused');
-    hero.classList.toggle('is-paused', paused);
-    pauseBtn.setAttribute('aria-label', paused ? 'スライドショーを再生' : 'スライドショーを一時停止');
-  });
-  // 画面外にある間は止めて負荷を下げる
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      hero.classList.toggle('is-offscreen', !entries[0].isIntersecting);
-    }).observe(hero);
+  function schedule() { if (!raf) raf = requestAnimationFrame(tick); }
+  function resize() {
+    canvas.width = Math.round(window.innerWidth * dpr);
+    canvas.height = Math.round(window.innerHeight * dpr);
+    calcAnchors(); dirty = true; schedule();
   }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', resize);
+  window.addEventListener('load', function () { calcAnchors(); dirty = true; schedule(); });
+  resize();
+  pump();
 
   /* ---- ヘッダー：スクロールで背景／アクティブ項目（ゴールド） ---- */
   var header = d.getElementById('header');
