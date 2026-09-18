@@ -1029,10 +1029,13 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   // ただし「いま見ている位置の近く」を常に優先する（回線が遅くてもスクロール先が先に来る）
   function nextToLoad() {
     var c = Math.round(target);
-    for (var k = 0; k < 14; k++) {
-      var a = c + k, b = c - k;
-      if (a < SEQ.count && frames[a] === undefined && !loading[a]) return a;
-      if (b >= 0 && frames[b] === undefined && !loading[b]) return b;
+    // 近傍±14枚は「4枚おき → 2枚おき → 全部」の順（早く全体が埋まり、動き続けても最寄りが近くなる）
+    for (var st = 4; st >= 1; st = st / 2) {
+      for (var k = 0; k < 14; k++) {
+        var a = c + k, b = c - k;
+        if (a < SEQ.count && a % st === 0 && frames[a] === undefined && !loading[a]) return a;
+        if (b >= 0 && b % st === 0 && frames[b] === undefined && !loading[b]) return b;
+      }
     }
     for (var j = 0; j < order.length; j++) if (frames[order[j]] === undefined && !loading[order[j]]) return order[j];
     return -1;
@@ -1125,9 +1128,8 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   function tick() {
     raf = 0;
     var y = window.scrollY;
-    var prev = target;
     target = progressAt(y) * (SEQ.count - 1);
-    if (Math.abs(target - prev) > 8) cancelFar();
+    cancelFar();
     pump();
     // 入口の1枚は最初の 70vh で映像に溶ける（少しだけ寄る）
     var p = Math.min(1, y / (window.innerHeight * 0.7));
