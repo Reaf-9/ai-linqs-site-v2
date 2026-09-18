@@ -226,6 +226,13 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
 .link{color:var(--blue);box-shadow:inset 0 -1px 0 rgba(142,203,255,.5);transition:color var(--t)}
 .link:hover{color:var(--text)}
 
+/* ---------- 写真・ロゴの受け皿（素材が届いたら HTML のコメントを外して差し込む） ---------- */
+.logo img{height:22px;width:auto;display:block}
+.slide__photo{margin:28px 0 0;max-width:36em;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--line-2);background:rgba(var(--shade),.4)}
+.slide__photo img{width:100%;height:100%;object-fit:cover}
+.slide__photo figcaption{padding:8px 0 0;font-size:12px;color:var(--faint)}
+.message__portrait{width:112px;height:112px;margin:0 0 22px;border-radius:999px;object-fit:cover;border:1px solid var(--line-2)}
+
 /* ---------- フッター ---------- */
 .footer{position:relative;padding-block:72px 32px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);background:rgba(var(--shade),.97)}
 .footer__grid{display:grid;grid-template-columns:1.1fr 1fr auto;gap:40px}
@@ -299,6 +306,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
 <!-- ============ ヘッダー ============ -->
 <header class="site-header" id="header">
   <a href="#top" class="logo" aria-label="AI Linqs トップへ"><span class="logo__ai">AI</span> Linqs</a>
+  <!-- ロゴ画像が届いたら上の行をこれに差し替え：<a href="#top" class="logo" aria-label="AI Linqs トップへ"><img src="assets/logo.png" alt="AI Linqs" width="220" height="44"></a> -->
   <nav class="pill-nav" aria-label="グローバルナビゲーション">
     <ul>
       <li><a href="#service" data-spy>Service</a></li>
@@ -546,6 +554,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
         <div><dt>課題</dt><dd>人による確認作業が多く、確認漏れや再確認が頻発。業務効率が上がりにくい状態でした。</dd></div>
         <div><dt>成果</dt><dd>配車表・荷物の状況・人件費・配送費など、バラバラだった情報を一つに連携。ひとつを更新すると関連情報がすべて連動するため、確認の手間が大きく減り、人を増やさずに業務が回る体制になりました。</dd></div>
       </dl>
+      <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-01.jpg" alt="門正運輸株式会社 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
   <section class="slide slide--s" id="case-2">
@@ -557,6 +566,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
         <div><dt>課題</dt><dd>業務の進め方が個人の経験に頼りがちで、社内で情報やノウハウを共有しづらい状態でした。</dd></div>
         <div><dt>成果</dt><dd>マニュアルや業務フローを社内で共有・更新するためのポータルアプリを構築し、情報共有や教育、引き継ぎがスムーズに。シフト作成も自動化し、作業時間を大幅に削減することで経営体制を健全化しました。</dd></div>
       </dl>
+      <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-02.jpg" alt="ケイズモビリティ 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
   <section class="slide slide--s" id="case-3">
@@ -568,6 +578,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
         <div><dt>課題</dt><dd>社長自身がAIで壁打ちをするなど関心は高いものの、実際の社内業務にどう活かせばよいかが分からない状態でした。</dd></div>
         <div><dt>成果</dt><dd>資料作成や数値分析、定期作業を自動化し、社内のAIリテラシーが向上。士業AIの活用で知識と選択肢が増え、リスクマネジメントが強化されるなど、「AIを実務で回せる会社」になりました。</dd></div>
       </dl>
+      <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-03.jpg" alt="FUJINO GROUP 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
   <section class="slide slide--s" id="stance">
@@ -721,6 +732,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <p class="eyebrow reveal">Message</p>
       <h2 class="slide__title slide__title--m reveal" style="--d:1">代表メッセージ</h2>
       <div class="message reveal" style="--d:2">
+        <!-- 社長の写真が届いたら：<img class="message__portrait" src="assets/ceo.jpg" alt="代表取締役 田中 勇気" width="224" height="224" loading="lazy" decoding="async"> -->
         <p style="margin-top:22px">「AIを入れたが、現場が使ってくれない」——そんな声を、何度も聞いてきました。</p>
         <p>便利なツールは、世の中にあふれています。けれど、現場に定着しなければ意味がありません。大切なのは、その会社の業務に合わせて設計し、使い続けられる状態まで伴走すること。私たちはそこに、いちばん力を注ぎます。</p>
         <p>人手不足が進むこれからの時代、AIは「人を減らす道具」ではなく「人の力を引き出す相棒」になれると信じています。経営者の隣に立ち、共に考え、共に動く。それが私たちの役割です。</p>
@@ -994,12 +1006,14 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   var poster = d.getElementById('worldPoster');
   var ctx = canvas.getContext('2d', { alpha: false });
   var SEQ = { count: 150, dir: window.matchMedia('(max-width: 767px)').matches ? 'assets/seq/sp/' : 'assets/seq/pc/' };
-  var frames = new Array(SEQ.count);
-  var target = 0, shown = 0, drawn = -1, dirty = false, raf = 0;
+  var frames = new Array(SEQ.count);   // デコード済みの Image（undefined＝未着手、null＝諦めた）
+  var loading = new Array(SEQ.count);
+  var tries = new Array(SEQ.count);
+  var target = 0, shown = 0, drawnKey = '', dirty = false, raf = 0;
   var dpr = Math.min(1.5, window.devicePixelRatio || 1);
 
   function src(i) { return SEQ.dir + 'f' + ('000' + (i + 1)).slice(-4) + '.jpg'; }
-  // 読み込み済みで最も近いフレーム
+  // 読み込み済みで最も近いコマ
   function nearest(f) {
     var r = Math.round(f);
     if (frames[r]) return r;
@@ -1009,28 +1023,55 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     }
     return -1;
   }
-  // 粗い間隔 → 細かい間隔の順に読み込む（最初の1枚は最優先）
+  // 基本の読み込み順：16枚おき → 8 → 4 → 2 → 全部
   var order = [];
   [16, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < SEQ.count; i += st) if (order.indexOf(i) < 0) order.push(i); });
-  var qi = 0, inflight = 0;
+  // ただし「いま見ている位置の近く」を常に優先する（回線が遅くてもスクロール先が先に来る）
+  function nextToLoad() {
+    var c = Math.round(target);
+    for (var k = 0; k < 14; k++) {
+      var a = c + k, b = c - k;
+      if (a < SEQ.count && frames[a] === undefined && !loading[a]) return a;
+      if (b >= 0 && frames[b] === undefined && !loading[b]) return b;
+    }
+    for (var j = 0; j < order.length; j++) if (frames[order[j]] === undefined && !loading[order[j]]) return order[j];
+    return -1;
+  }
+  var inflight = 0, MAX = 6, active = {};
+  // 見ている位置から遠く離れたコマの通信は打ち切る（一気にスクロールした時に、飛び先を先に取るため）
+  function cancelFar() {
+    for (var k in active) {
+      var i = +k;
+      if (Math.abs(i - target) > 24 && !active[k].naturalWidth) { active[k].aborted = true; active[k].src = ''; }
+    }
+  }
   function pump() {
-    while (inflight < 4 && qi < order.length) {
+    while (inflight < MAX) {
+      var i = nextToLoad();
+      if (i < 0) return;
+      loading[i] = true; inflight++;
       (function (i) {
-        if (frames[i]) return;
-        inflight++;
         var im = new Image();
-        im.onload = im.onerror = function () {
-          inflight--;
-          if (im.naturalWidth) {
+        active[i] = im;
+        var done = function (ok) {
+          inflight--; loading[i] = false; delete active[i];
+          if (im.aborted) { /* 打ち切り：あとで読み直す */ }
+          else if (ok) {
             frames[i] = im;
             if (i === 0) world.classList.add('is-ready');
-            if (Math.abs(i - shown) < 8) dirty = true;
+            if (Math.abs(i - shown) < 16) dirty = true;
             schedule();
+          } else {
+            tries[i] = (tries[i] || 0) + 1;
+            if (tries[i] >= 3) frames[i] = null;   // 3回失敗したら諦めて最寄りのコマで代用
           }
           pump();
         };
         im.src = src(i);
-      })(order[qi++]);
+        // デコードまで済ませてから使う（描画の瞬間に固まらないように）
+        if (im.decode) im.decode().then(function () { done(true); }, function () { done(!!im.naturalWidth); });
+        else { im.onload = function () { done(true); }; im.onerror = function () { done(false); }; }
+      })(i);
     }
   }
 
@@ -1058,19 +1099,36 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     return 1;
   }
 
-  function draw() {
-    var i = nearest(shown);
-    if (i < 0 || (i === drawn && !dirty)) return;
-    var im = frames[i], cw = canvas.width, ch = canvas.height;
+  function fit(im) {
+    var cw = canvas.width, ch = canvas.height;
     var s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
     var w = im.naturalWidth * s, h = im.naturalHeight * s;
-    ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
-    drawn = i; dirty = false;
+    return [(cw - w) / 2, (ch - h) / 2, w, h];
+  }
+  // 隣り合う2コマを重ねて描く（150枚のコマ送りを滑らかに見せる）。片方しか無ければ最寄りのコマ
+  function draw() {
+    var i = Math.floor(shown), j = Math.min(SEQ.count - 1, i + 1), t = shown - i, key, r;
+    if (frames[i] && frames[j] && t > 0.02 && t < 0.98) {
+      key = i + ':' + t.toFixed(2);
+      if (key === drawnKey && !dirty) return;
+      r = fit(frames[i]); ctx.globalAlpha = 1; ctx.drawImage(frames[i], r[0], r[1], r[2], r[3]);
+      r = fit(frames[j]); ctx.globalAlpha = t; ctx.drawImage(frames[j], r[0], r[1], r[2], r[3]); ctx.globalAlpha = 1;
+    } else {
+      var n = nearest(shown);
+      if (n < 0) return;
+      key = 'n' + n;
+      if (key === drawnKey && !dirty) return;
+      r = fit(frames[n]); ctx.globalAlpha = 1; ctx.drawImage(frames[n], r[0], r[1], r[2], r[3]);
+    }
+    drawnKey = key; dirty = false;
   }
   function tick() {
     raf = 0;
     var y = window.scrollY;
+    var prev = target;
     target = progressAt(y) * (SEQ.count - 1);
+    if (Math.abs(target - prev) > 8) cancelFar();
+    pump();
     // 入口の1枚は最初の 70vh で映像に溶ける（少しだけ寄る）
     var p = Math.min(1, y / (window.innerHeight * 0.7));
     poster.style.opacity = (1 - p).toFixed(3);
