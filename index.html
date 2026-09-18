@@ -1037,11 +1037,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     return null;
   }
   var inflight = 0, MAX = 6;
-  // 見ている位置から遠く離れたコマの通信は打ち切る（一気にスクロールした時に、飛び先を先に取るため）
+  // 読み始めた後にユーザーが大きく移動し、そのコマが見ている位置から遠くなったら通信を打ち切る
+  // （一気にスクロールした時に飛び先を先に取るため。止まっている間の「残りの読み込み」は打ち切らない）
   function cancelFar() {
     for (var k in active) {
       var im = active[k];
-      if (Math.abs(im.frame - target) > 24 && !im.naturalWidth) { im.aborted = true; im.src = ''; }
+      if (Math.abs(target - im.at) > 12 && Math.abs(im.frame - target) > 24 && !im.naturalWidth) { im.aborted = true; im.src = ''; }
     }
   }
   function pump() {
@@ -1052,7 +1053,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
         var key = tier + i, arr = tier === 'h' ? hi : lo;
         busy[key] = true; inflight++;
         var im = new Image();
-        im.frame = i; active[key] = im;
+        im.frame = i; im.at = target; active[key] = im;
         var done = function (ok) {
           inflight--; busy[key] = false; delete active[key];
           if (im.aborted) { /* 打ち切り：あとで読み直す */ }
