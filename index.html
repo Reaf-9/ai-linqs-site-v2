@@ -999,82 +999,78 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     a.setAttribute('rel', 'noopener');
   });
 
-  /* ---- 世界：連番画像をスクロール位置で進める（Apple の製品ページと同じ方式） ---- */
+  /* ---- 世界：連番画像をスクロール位置で進める（Apple の製品ページと同じ方式） ----
+     2段構え：軽い低解像度（pc-lo/sp-lo）を先に読んで動きをすぐ見せ、高解像度（pc/sp）で置き換える */
   var hero = d.getElementById('top');
   var world = d.getElementById('world');
   var canvas = d.getElementById('worldCanvas');
   var poster = d.getElementById('worldPoster');
   var ctx = canvas.getContext('2d', { alpha: false });
-  var SEQ = { count: 150, dir: window.matchMedia('(max-width: 767px)').matches ? 'assets/seq/sp/' : 'assets/seq/pc/' };
-  var frames = new Array(SEQ.count);   // デコード済みの Image（undefined＝未着手、null＝諦めた）
-  var loading = new Array(SEQ.count);
-  var tries = new Array(SEQ.count);
+  var isSP = window.matchMedia('(max-width: 767px)').matches;
+  var SEQ = { count: 150, hi: isSP ? 'assets/seq/sp/' : 'assets/seq/pc/', lo: isSP ? 'assets/seq/sp-lo/' : 'assets/seq/pc-lo/' };
+  var hi = new Array(SEQ.count), lo = new Array(SEQ.count);      // デコード済み Image（undefined＝未着手、null＝諦めた）
+  var busy = {}, tries = {}, active = {};
   var target = 0, shown = 0, drawnKey = '', dirty = false, raf = 0;
   var dpr = Math.min(1.5, window.devicePixelRatio || 1);
 
-  function src(i) { return SEQ.dir + 'f' + ('000' + (i + 1)).slice(-4) + '.jpg'; }
-  // 読み込み済みで最も近いコマ
-  function nearest(f) {
-    var r = Math.round(f);
-    if (frames[r]) return r;
-    for (var k = 1; k < SEQ.count; k++) {
-      if (r - k >= 0 && frames[r - k]) return r - k;
-      if (r + k < SEQ.count && frames[r + k]) return r + k;
-    }
-    return -1;
-  }
+  function src(tier, i) { return (tier === 'h' ? SEQ.hi : SEQ.lo) + 'f' + ('000' + (i + 1)).slice(-4) + '.jpg'; }
+  function free(tier, i) { var arr = tier === 'h' ? hi : lo; return arr[i] === undefined && !busy[tier + i]; }
   // 基本の読み込み順：16枚おき → 8 → 4 → 2 → 全部
   var order = [];
   [16, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < SEQ.count; i += st) if (order.indexOf(i) < 0) order.push(i); });
-  // ただし「いま見ている位置の近く」を常に優先する（回線が遅くてもスクロール先が先に来る）
-  function nextToLoad() {
+  // 次に読むコマ：①近傍の低解像度（4枚おき）②近傍の高解像度（4→2→全部）③残りの低解像度 ④残りの高解像度
+  function nearFree(tier, st) {
     var c = Math.round(target);
-    // 近傍±14枚は「4枚おき → 2枚おき → 全部」の順（早く全体が埋まり、動き続けても最寄りが近くなる）
-    for (var st = 4; st >= 1; st = st / 2) {
-      for (var k = 0; k < 14; k++) {
-        var a = c + k, b = c - k;
-        if (a < SEQ.count && a % st === 0 && frames[a] === undefined && !loading[a]) return a;
-        if (b >= 0 && b % st === 0 && frames[b] === undefined && !loading[b]) return b;
-      }
+    for (var k = 0; k < 14; k++) {
+      var p = c + k, m = c - k;
+      if (p < SEQ.count && p % st === 0 && free(tier, p)) return p;
+      if (m >= 0 && m % st === 0 && free(tier, m)) return m;
     }
-    for (var j = 0; j < order.length; j++) if (frames[order[j]] === undefined && !loading[order[j]]) return order[j];
     return -1;
   }
-  var inflight = 0, MAX = 6, active = {};
+  function nextToLoad() {
+    var i = nearFree('l', 4); if (i >= 0) return ['l', i];
+    for (var st = 4; st >= 1; st = st / 2) { i = nearFree('h', st); if (i >= 0) return ['h', i]; }
+    for (var j = 0; j < order.length; j++) if (free('l', order[j])) return ['l', order[j]];
+    for (j = 0; j < order.length; j++) if (free('h', order[j])) return ['h', order[j]];
+    return null;
+  }
+  var inflight = 0, MAX = 6;
   // 見ている位置から遠く離れたコマの通信は打ち切る（一気にスクロールした時に、飛び先を先に取るため）
   function cancelFar() {
     for (var k in active) {
-      var i = +k;
-      if (Math.abs(i - target) > 24 && !active[k].naturalWidth) { active[k].aborted = true; active[k].src = ''; }
+      var im = active[k];
+      if (Math.abs(im.frame - target) > 24 && !im.naturalWidth) { im.aborted = true; im.src = ''; }
     }
   }
   function pump() {
     while (inflight < MAX) {
-      var i = nextToLoad();
-      if (i < 0) return;
-      loading[i] = true; inflight++;
-      (function (i) {
+      var n = nextToLoad();
+      if (!n) return;
+      (function (tier, i) {
+        var key = tier + i, arr = tier === 'h' ? hi : lo;
+        busy[key] = true; inflight++;
         var im = new Image();
-        active[i] = im;
+        im.frame = i; active[key] = im;
         var done = function (ok) {
-          inflight--; loading[i] = false; delete active[i];
+          inflight--; busy[key] = false; delete active[key];
           if (im.aborted) { /* 打ち切り：あとで読み直す */ }
           else if (ok) {
-            frames[i] = im;
+            arr[i] = im;
             if (i === 0) world.classList.add('is-ready');
             if (Math.abs(i - shown) < 16) dirty = true;
             schedule();
           } else {
-            tries[i] = (tries[i] || 0) + 1;
-            if (tries[i] >= 3) frames[i] = null;   // 3回失敗したら諦めて最寄りのコマで代用
+            tries[key] = (tries[key] || 0) + 1;
+            if (tries[key] >= 3) arr[i] = null;   // 3回失敗したら諦める
           }
           pump();
         };
-        im.src = src(i);
+        im.src = src(tier, i);
         // デコードまで済ませてから使う（描画の瞬間に固まらないように）
         if (im.decode) im.decode().then(function () { done(true); }, function () { done(!!im.naturalWidth); });
         else { im.onload = function () { done(true); }; im.onerror = function () { done(false); }; }
-      })(i);
+      })(n[0], n[1]);
     }
   }
 
@@ -1108,20 +1104,34 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     var w = im.naturalWidth * s, h = im.naturalHeight * s;
     return [(cw - w) / 2, (ch - h) / 2, w, h];
   }
-  // 隣り合う2コマを重ねて描く（150枚のコマ送りを滑らかに見せる）。片方しか無ければ最寄りのコマ
+  // いま描けるコマ：その位置の高解像度 → 隣の高解像度 → 低解像度 → 最寄り（高・低どちらでも）
+  function pick(f) {
+    var r = Math.round(f);
+    if (hi[r]) return ['h', r];
+    if (hi[r - 1]) return ['h', r - 1];
+    if (hi[r + 1]) return ['h', r + 1];
+    if (lo[r]) return ['l', r];
+    for (var k = 1; k < SEQ.count; k++) {
+      if (r - k >= 0) { if (hi[r - k]) return ['h', r - k]; if (lo[r - k]) return ['l', r - k]; }
+      if (r + k < SEQ.count) { if (hi[r + k]) return ['h', r + k]; if (lo[r + k]) return ['l', r + k]; }
+    }
+    return null;
+  }
+  // 隣り合う2コマ（高解像度）を重ねて描き、コマ送りを滑らかに見せる
   function draw() {
     var i = Math.floor(shown), j = Math.min(SEQ.count - 1, i + 1), t = shown - i, key, r;
-    if (frames[i] && frames[j] && t > 0.02 && t < 0.98) {
+    if (hi[i] && hi[j] && t > 0.02 && t < 0.98) {
       key = i + ':' + t.toFixed(2);
       if (key === drawnKey && !dirty) return;
-      r = fit(frames[i]); ctx.globalAlpha = 1; ctx.drawImage(frames[i], r[0], r[1], r[2], r[3]);
-      r = fit(frames[j]); ctx.globalAlpha = t; ctx.drawImage(frames[j], r[0], r[1], r[2], r[3]); ctx.globalAlpha = 1;
+      r = fit(hi[i]); ctx.globalAlpha = 1; ctx.drawImage(hi[i], r[0], r[1], r[2], r[3]);
+      r = fit(hi[j]); ctx.globalAlpha = t; ctx.drawImage(hi[j], r[0], r[1], r[2], r[3]); ctx.globalAlpha = 1;
     } else {
-      var n = nearest(shown);
-      if (n < 0) return;
-      key = 'n' + n;
+      var n = pick(shown);
+      if (!n) return;
+      key = n[0] + n[1];
       if (key === drawnKey && !dirty) return;
-      r = fit(frames[n]); ctx.globalAlpha = 1; ctx.drawImage(frames[n], r[0], r[1], r[2], r[3]);
+      var im = (n[0] === 'h' ? hi : lo)[n[1]];
+      r = fit(im); ctx.globalAlpha = 1; ctx.drawImage(im, r[0], r[1], r[2], r[3]);
     }
     drawnKey = key; dirty = false;
   }
