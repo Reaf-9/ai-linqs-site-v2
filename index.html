@@ -12,7 +12,10 @@
 <meta property="og:description" content="研修やツール導入で終わらせない。現場に合わせて設計し、定着まで“共に”伴走するAI導入パートナー。">
 <meta property="og:site_name" content="AI Linqs">
 <meta name="theme-color" content="#0a0e16">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a0e16%27/%3E%3Ctext x=%2732%27 y=%2743%27 text-anchor=%27middle%27 font-family=%27Inter,Helvetica,Arial,sans-serif%27 font-weight=%27700%27 font-size=%2730%27 fill=%27%238ecbff%27%3EAI%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<!-- 旧：インラインSVG <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a0e16%27/%3E%3Ctext x=%2732%27 y=%2743%27 text-anchor=%27middle%27 font-family=%27Inter,Helvetica,Arial,sans-serif%27 font-weight=%27700%27 font-size=%2730%27 fill=%27%238ecbff%27%3EAI%3C/text%3E%3C/svg%3E"> -->
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -227,6 +230,40 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
 .link{color:var(--blue);box-shadow:inset 0 -1px 0 rgba(142,203,255,.5);transition:color var(--t)}
 .link:hover{color:var(--text)}
 
+/* ---------- 図解（外部ライブラリなし。HTML＋CSS の箱と矢印） ---------- */
+.fig{margin:30px 0 0;max-width:40em;padding:20px 22px;border:1px solid var(--line-2);background:rgba(var(--shade),.5)}
+.fig__cap{margin:0 0 14px;font-size:12px;letter-spacing:.1em;color:var(--blue)}
+.fig__note{margin:12px 0 0;font-size:12.5px;color:var(--faint)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.flow+.flow{margin-top:10px}
+.node{display:inline-flex;align-items:center;padding:8px 13px;border:1px solid var(--line-2);border-radius:8px;font-size:13.5px;line-height:1.5;color:var(--text);background:rgba(var(--shade),.55)}
+.node--ai{border-color:rgba(142,203,255,.55);color:var(--blue);background:var(--blue-soft)}
+.node--hi{border-color:rgba(201,169,97,.6);color:var(--gold);background:var(--gold-soft)}
+.node--dim{color:var(--muted);border-style:dashed}
+.arrow{color:var(--faint);font-size:15px;line-height:1}
+.converge{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.2fr);gap:12px;align-items:center}
+.converge__list{display:grid;gap:6px}
+.converge .node--hub{padding:14px 18px;font-size:15px;justify-content:center}
+.lanes{display:grid;gap:8px}
+.lane{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.lane .node{justify-content:center;text-align:center}
+.tl{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:10px;position:relative;margin:0;padding:0;list-style:none}
+.tl::before{content:"";position:absolute;left:12px;right:12px;top:11px;height:1px;background:var(--line-2)}
+.tl li{position:relative;padding-top:32px;font-size:13px;line-height:1.7;color:var(--muted)}
+.tl li::before{content:attr(data-n);position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;background:var(--bg-2);border:1px solid var(--blue);color:var(--blue);font-size:11px;display:grid;place-items:center}
+.tl li.is-hi::before{border-color:var(--gold);color:var(--gold)}
+.tl b{display:block;margin-bottom:2px;font-weight:500;font-size:14px;color:var(--text)}
+.icons3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.icons3 div{display:grid;gap:8px;justify-items:center;text-align:center;font-size:13px;color:var(--muted)}
+.icons3 svg{width:34px;height:34px;color:var(--blue)}
+.icons3 b{font-weight:500;color:var(--text)}
+@media (max-width:600px){
+  .converge{grid-template-columns:1fr}.converge>.arrow{justify-self:center;transform:rotate(90deg)}
+  .lane{grid-template-columns:1fr}.lane>.arrow{justify-self:center;transform:rotate(90deg)}
+  .tl{grid-template-columns:1fr 1fr}.tl::before{display:none}
+  .icons3{grid-template-columns:1fr}
+}
+
 /* ---------- 写真・ロゴの受け皿（素材が届いたら HTML のコメントを外して差し込む） ---------- */
 .logo img{height:22px;width:auto;display:block}
 .slide__photo{margin:28px 0 0;max-width:36em;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--line-2);background:rgba(var(--shade),.4)}
@@ -310,12 +347,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <!-- ロゴ画像が届いたら上の行をこれに差し替え：<a href="#top" class="logo" aria-label="AI Linqs トップへ"><img src="assets/logo.png" alt="AI Linqs" width="220" height="44"></a> -->
   <nav class="pill-nav" aria-label="グローバルナビゲーション">
     <ul>
-      <li><a href="#service" data-spy>Service</a></li>
-      <li><a href="#works" data-spy>Works</a></li>
-      <li><a href="#process" data-spy>Process</a></li>
-      <li><a href="#philosophy" data-spy>Philosophy</a></li>
-      <li><a href="#company" data-spy>Company</a></li>
-      <li><a href="#contact" data-spy>Contact</a></li>
+      <li><a href="#service" data-spy>サービス</a></li>
+      <li><a href="#works" data-spy>実績</a></li>
+      <li><a href="#process" data-spy>流れ</a></li>
+      <li><a href="#philosophy" data-spy>想い</a></li>
+      <li><a href="#company" data-spy>会社概要</a></li>
+      <li><a href="#contact" data-spy>お問い合わせ</a></li>
     </ul>
   </nav>
   <div class="header__end">
@@ -331,12 +368,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
 <div class="sp-menu" id="spMenu">
   <nav aria-label="スマートフォン用メニュー">
     <ul>
-      <li><a class="sp-link" href="#service" data-spy>Service<small>サービス</small></a></li>
-      <li><a class="sp-link" href="#works" data-spy>Works<small>実績</small></a></li>
-      <li><a class="sp-link" href="#process" data-spy>Process<small>導入の流れ</small></a></li>
-      <li><a class="sp-link" href="#philosophy" data-spy>Philosophy<small>大切にしていること</small></a></li>
-      <li><a class="sp-link" href="#company" data-spy>Company<small>会社概要</small></a></li>
-      <li><a class="sp-link" href="#contact" data-spy>Contact<small>お問い合わせ</small></a></li>
+      <li><a class="sp-link" href="#service" data-spy>サービス<small>Service</small></a></li>
+      <li><a class="sp-link" href="#works" data-spy>実績<small>Works</small></a></li>
+      <li><a class="sp-link" href="#process" data-spy>導入の流れ<small>Process</small></a></li>
+      <li><a class="sp-link" href="#philosophy" data-spy>想い<small>Philosophy</small></a></li>
+      <li><a class="sp-link" href="#company" data-spy>会社概要<small>Company</small></a></li>
+      <li><a class="sp-link" href="#contact" data-spy>お問い合わせ<small>Contact</small></a></li>
     </ul>
   </nav>
   <a href="#contact" class="btn btn--gold btn--lg" data-line-cta>
@@ -363,7 +400,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="issues">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Issues</p>
+      <p class="eyebrow reveal">課題</p>
       <h2 class="slide__title reveal" style="--d:1">こんな状況、ありませんか？</h2>
       <p class="slide__lead reveal" style="--d:2">ひとつでも当てはまるなら、AIで変えられる余地があります。</p>
     </div></div>
@@ -374,6 +411,11 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <span class="slide__num reveal" aria-hidden="true">01</span>
       <h3 class="slide__title reveal" style="--d:1">確認が、社長に集まる</h3>
       <p class="slide__lead reveal" style="--d:2">判断や承認が経営者に集中し、<strong>売上が伸びるほど業務が詰まる</strong>。気づけば現場が止まる原因が自分になっている。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">確認の流れ</p>
+        <div class="converge"><div class="converge__list"><span class="node node--dim">現場からの確認</span><span class="node node--dim">見積の承認</span><span class="node node--dim">請求・支払いの判断</span><span class="node node--dim">採用・シフト</span></div><span class="arrow" aria-hidden="true">→</span><span class="node node--hi node--hub">社長</span></div>
+        <p class="fig__note">判断や承認がひとりに集まり、待ちが発生する</p>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="issue-2">
@@ -381,7 +423,11 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     <div class="container"><div class="slide__inner">
       <span class="slide__num reveal" aria-hidden="true">02</span>
       <h3 class="slide__title reveal" style="--d:1">人を増やしても、ラクにならない</h3>
-      <p class="slide__lead reveal" style="--d:2">採用しても<strong>管理工数が減らず</strong>、教育コストばかり増える。人手は増えたのに利益改善につながらない。</p>
+      <p class="slide__lead reveal" style="--d:2">採用しても<strong>管理工数が減らず</strong>、教育の費用ばかり増える。人手は増えたのに利益改善につながらない。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">よくある悪循環</p>
+        <div class="flow"><span class="node">人を増やす</span><span class="arrow" aria-hidden="true">→</span><span class="node node--dim">管理の手間が増える</span><span class="arrow" aria-hidden="true">→</span><span class="node node--dim">教育の費用が増える</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">利益は変わらない</span></div>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="issue-3">
@@ -390,6 +436,10 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <span class="slide__num reveal" aria-hidden="true">03</span>
       <h3 class="slide__title reveal" style="--d:1">紙・Excel・口頭が、混在している</h3>
       <p class="slide__lead reveal" style="--d:2">情報がバラバラで、<strong>特定の人がいないと業務が止まる</strong>。引き継ぎも属人化し、ノウハウが残らない。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">情報のありか</p>
+        <div class="flow"><span class="node node--dim">紙の帳票</span><span class="node node--dim">Excel</span><span class="node node--dim">口頭・記憶</span><span class="arrow" aria-hidden="true">→</span><span class="node">情報がバラバラ</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">その人がいないと止まる</span></div>
+      </div>
     </div></div>
   </section>
 
@@ -397,7 +447,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide chapter" id="ch-connection" data-frame="0.3">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Connection</p>
+      <p class="eyebrow reveal">つながり</p>
       <h2 class="slide__title slide__title--xl reveal" style="--d:1">人の力を、<br>AIで引き出す。</h2>
       <p class="slide__lead reveal" style="--d:2">AIは、人を減らすための道具じゃない。<br>一人ひとりが本来の仕事に集中できるように。<br>人と人の“つながり”を、取り戻すために。</p>
     </div></div>
@@ -407,7 +457,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="why">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Why AI Linqs</p>
+      <p class="eyebrow reveal">選ばれる理由</p>
       <h2 class="slide__title reveal" style="--d:1">“研修だけ・導入だけ”で、終わらせない。</h2>
       <p class="slide__lead reveal" style="--d:2">同じ「AI支援」でも、私たちが大切にしているのはこの3つです。</p>
     </div></div>
@@ -416,8 +466,13 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
       <span class="slide__num reveal" aria-hidden="true">01</span>
-      <h3 class="slide__title reveal" style="--d:1">ROI起点で話す</h3>
+      <h3 class="slide__title reveal" style="--d:1">投資に見合うかで話す</h3>
       <p class="slide__lead reveal" style="--d:2">ツールの機能説明ではなく、<strong>工数削減と利益</strong>で語ります。投資に見合うかを一緒に判断します。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">話す順番</p>
+        <div class="flow"><span class="node node--hi">投資（費用・時間）</span><span class="arrow" aria-hidden="true">⇄</span><span class="node node--ai">効果（工数削減・利益）</span><span class="arrow" aria-hidden="true">→</span><span class="node">見合うかを一緒に判断</span></div>
+        <p class="fig__note">「何ができるか」ではなく「いくら減って、いくら残るか」から</p>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="why-2">
@@ -426,6 +481,10 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <span class="slide__num reveal" aria-hidden="true">02</span>
       <h3 class="slide__title reveal" style="--d:1">アナログ現場に強い</h3>
       <p class="slide__lead reveal" style="--d:2">紙・口頭・Excelが前提の現場でも導入できる設計が得意。<strong>「うちは無理」と諦めていた会社こそ</strong>伸びしろがあります。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">進め方</p>
+        <div class="flow"><span class="node node--dim">紙・口頭・Excel の現場</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">現場に合わせて設計</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">そのまま使える仕組み</span></div>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="why-3">
@@ -434,6 +493,11 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <span class="slide__num reveal" aria-hidden="true">03</span>
       <h3 class="slide__title reveal" style="--d:1">定着まで伴走する</h3>
       <p class="slide__lead reveal" style="--d:2">研修や導入で終わらず、<strong>現場が自走できる状態まで</strong>一緒に作ります。経営者の隣で、共に勝ちにいきます。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">どこまで一緒に走るか</p>
+        <ol class="tl" style="--n:4"><li data-n="1"><b>研修</b>使い方を知る</li><li data-n="2"><b>導入</b>業務に組み込む</li><li data-n="3" class="is-hi"><b>定着</b>現場が自走できる</li><li data-n="4" class="is-hi"><b>次の一手</b>投資判断ができる</li></ol>
+        <p class="fig__note">多くの支援は 1〜2 で終わる。私たちは 3〜4 まで</p>
+      </div>
     </div></div>
   </section>
 
@@ -441,7 +505,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide chapter" id="ch-partnership" data-frame="0.62">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Partnership</p>
+      <p class="eyebrow reveal">伴走</p>
       <h2 class="slide__title slide__title--xl reveal" style="--d:1">ともに考え、<br>ともに動く。</h2>
       <p class="slide__lead reveal" style="--d:2">外注先ではなく、伴走者として。<br>御社の現場に入り込み、課題を一緒に解く。<br>経営者の隣で、共に勝ちにいくパートナーへ。</p>
     </div></div>
@@ -451,7 +515,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="service">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Service</p>
+      <p class="eyebrow reveal">サービス</p>
       <h2 class="slide__title reveal" style="--d:1">「何を解決したいか」から選べます</h2>
       <p class="slide__lead reveal" style="--d:2">まずはAI研修から。必要に応じて、業務の自動化や仕組み化まで広げられます。</p>
     </div></div>
@@ -459,9 +523,13 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="guide">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">GUIDE</p>
+      <p class="slide__tag reveal">選び方</p>
       <h3 class="slide__title slide__title--m reveal" style="--d:1">迷ったら、ここから</h3>
       <p class="slide__lead reveal" style="--d:2">まずは学ぶことから、業務の自動化、仕組み化まで。段階的に広げられるサービスをご用意しています。迷ったら無料相談でご一緒に整理します。</p>
+      <div class="fig reveal" style="--d:4">
+        <p class="fig__cap">広げ方の順番</p>
+        <ol class="tl" style="--n:3"><li data-n="1"><b>学ぶ</b>AI研修・教育</li><li data-n="2"><b>任せる</b>AI社員・AI部署長構築</li><li data-n="3"><b>仕組み化</b>社内アプリ・業務システム制作</li></ol>
+      </div>
       <ul class="mini reveal" style="--d:3">
         <li><span>01</span><span><b>まず社内で使えるように</b>AIの土台を作りたい → <strong>AI研修・教育</strong>。経営者の言葉で、3ヶ月で定着を目指します。</span></li>
         <li><span>02</span><span><b>特定の業務を楽にしたい</b>反復業務・属人化・管理負荷を解消したい → <strong>AI社員・AI部署長構築</strong>。</span></li>
@@ -474,8 +542,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     <div class="container"><div class="slide__inner">
       <p class="slide__tag reveal">まずはここから</p>
       <h3 class="slide__title reveal" style="--d:1">AI研修・教育</h3>
-      <p class="slide__lead reveal" style="--d:2">社内にAIを定着させる3ヶ月のコーチング。経営者の言葉に合わせて進めます。</p>
-      <div class="slide__actions reveal" style="--d:3"><a href="#detail-training" class="btn btn--ghost" data-modal>詳しく見る</a></div>
+      <p class="slide__lead reveal" style="--d:2">社内にAIを定着させる3ヶ月の伴走研修。経営者の言葉に合わせて進めます。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">3ヶ月の進め方</p>
+        <ol class="tl" style="--n:3"><li data-n="1"><b>1ヶ月目</b>現状分析・課題整理</li><li data-n="2"><b>2ヶ月目</b>ルール・ひな形の作成、現場展開</li><li data-n="3" class="is-hi"><b>3ヶ月目</b>定着確認・次の一手の設計</li></ol>
+      </div>
+      <div class="slide__actions reveal" style="--d:4"><a href="#detail-training" class="btn btn--ghost" data-modal>詳しく見る</a></div>
     </div></div>
   </section>
   <section class="slide slide--s" id="svc-aistaff">
@@ -484,7 +556,11 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <p class="slide__tag reveal">自動化・管理を軽く</p>
       <h3 class="slide__title reveal" style="--d:1">AI社員・AI部署長構築</h3>
       <p class="slide__lead reveal" style="--d:2">反復業務や確認・管理業務をAIが担い、担当者依存と管理負荷を解消。</p>
-      <div class="slide__actions reveal" style="--d:3"><a href="#detail-aistaff" class="btn btn--ghost" data-modal>詳しく見る</a></div>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">役割分担</p>
+        <div class="lanes"><div class="lane"><span class="node node--dim">反復・定型の業務</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">AI社員</span><span class="arrow" aria-hidden="true">→</span><span class="node">担当者依存の解消</span></div><div class="lane"><span class="node node--dim">報告・確認・進捗管理</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">AI部署長</span><span class="arrow" aria-hidden="true">→</span><span class="node">判断の詰まりを解消</span></div><div class="lane"><span class="node node--dim">人にしかできない仕事</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">人</span><span class="arrow" aria-hidden="true">→</span><span class="node">ここに集中できる</span></div></div>
+      </div>
+      <div class="slide__actions reveal" style="--d:4"><a href="#detail-aistaff" class="btn btn--ghost" data-modal>詳しく見る</a></div>
     </div></div>
   </section>
   <section class="slide slide--s" id="svc-app">
@@ -493,29 +569,52 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <p class="slide__tag reveal">現場専用の仕組み</p>
       <h3 class="slide__title reveal" style="--d:1">社内アプリ・業務システム制作</h3>
       <p class="slide__lead reveal" style="--d:2">現場固有のフローを、そのまま使える仕組みに。紙・Excel運用を置き換えます。</p>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">置き換えの考え方</p>
+        <div class="flow"><span class="node node--dim">紙・Excel の運用</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">現場の流れをそのままアプリに</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">誰でも回せる仕組み</span></div>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="lineup">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">LINEUP</p>
-      <h3 class="slide__title slide__title--m reveal" style="--d:1">サービスラインナップ</h3>
+      <p class="slide__tag reveal">一覧</p>
+      <h3 class="slide__title slide__title--m reveal" style="--d:1">サービス一覧</h3>
       <p class="slide__lead reveal" style="--d:2">料金はすべて「内容に応じてご提案」。明確な金額はサイトに掲載していません。まずはLINEで無料相談ください。</p>
       <ul class="mini reveal" style="--d:3">
         <li><span>01</span><span><b>AIお得情報配信</b>入口・無料 ─ LINEで役立つAI活用情報をお届け。まずは情報から、気軽に。</span></li>
-        <li><span>02</span><span><b>広告内製化／LPコーチング</b>コーチング ─ Meta・Google広告やLPを、社内で回せるように伴走。</span></li>
-        <li><span>03</span><span><b>社内DX整備</b>DX整備 ─ フォルダ・データベース・クラウド環境を整える。</span></li>
-        <li><span>04</span><span><b>AI顧問</b>プレミアム ─ 継続的にAI戦略を伴走する、月額の顧問契約。</span></li>
+        <li><span>02</span><span><b>広告・集客ページの内製化支援</b>伴走支援 ─ Meta・Google広告や集客ページ（LP）を、社内で回せるように伴走。</span></li>
+        <li><span>03</span><span><b>社内のデジタル環境整備</b>環境整備 ─ フォルダ・データベース・クラウド環境を整える。</span></li>
+        <li><span>04</span><span><b>AI顧問</b>継続支援 ─ 継続的にAI戦略を伴走する、月額の顧問契約。</span></li>
         <li><span>05</span><span><b>士業AI（無料お試し）</b>士業向け ─ 社労士・税理士など士業向けのAI。</span></li>
       </ul>
-      <div class="slide__actions reveal" style="--d:4"><a href="#detail-compare" class="btn btn--ghost" data-modal>サービス比較表を見る</a></div>
+      <div class="slide__actions reveal" style="--d:4"><a href="#compare" class="btn btn--ghost">サービス比較表を見る</a></div>
       <p class="slide__note reveal" style="--d:5">どれを選べばいいか迷ったら、<strong>まずはLINEで無料相談</strong>。現状をお聞きして、最適な進め方を一緒に整理します。（料金は内容に応じてご提案します）</p>
+    </div></div>
+  </section>
+  <section class="slide slide--s" id="compare">
+    <div class="slide__shade" aria-hidden="true"></div>
+    <div class="container"><div class="slide__inner slide__inner--wide">
+      <p class="slide__tag reveal">比較</p>
+      <h3 class="slide__title slide__title--m reveal" style="--d:1">サービス比較</h3>
+      <div class="table-wrap reveal" style="--d:2">
+        <table class="compare">
+          <thead><tr><th scope="col">サービス</th><th scope="col">解決する課題</th><th scope="col">こんな企業に</th><th scope="col">料金</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">AI研修・教育</th><td>社内にAIが定着しない</td><td>これから始めたい</td><td>ご相談ください</td></tr>
+            <tr><th scope="row">AI社員・AI部署長構築</th><td>反復業務・属人化・確認集中</td><td>業務自動化・管理負荷を減らしたい</td><td>ご相談ください</td></tr>
+            <tr><th scope="row">社内アプリ・業務システム</th><td>紙・Excel運用の限界</td><td>現場の仕組みを変えたい</td><td>ご相談ください</td></tr>
+            <tr><th scope="row">AI顧問</th><td>継続的なAI戦略</td><td>複数導入後の伴走が欲しい</td><td>ご相談ください</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="slide__note reveal" style="--d:3">※ 上記のほか、社内のデジタル環境整備・OA機器選びの補助などもご相談いただけます。</p>
     </div></div>
   </section>
   <section class="slide slide--s" id="shigyo">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">FOR PROFESSIONALS</p>
+      <p class="slide__tag reveal">士業の方へ</p>
       <h3 class="slide__title reveal" style="--d:1">士業AI（無料お試しあり）</h3>
       <p class="slide__lead reveal" style="--d:2">社労士・税理士など、士業の実務に特化したAI。専門業務の効率化を、無料お試しから体感いただけます。詳しい内容・お試し条件は専用ページでご案内します。</p>
       <div class="slide__actions reveal" style="--d:3"><a href="#contact" class="btn btn--ghost" data-line-cta>詳細を見る</a></div>
@@ -540,7 +639,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="works">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Works</p>
+      <p class="eyebrow reveal">実績</p>
       <h2 class="slide__title reveal" style="--d:1">導入事例</h2>
       <p class="slide__lead reveal" style="--d:2">「すごい成果」を盛るのではなく、業務の何がどう変わったか。実際の導入事例を、変化の構造でご紹介します。</p>
       <p class="slide__note reveal" style="--d:3">※ 成果は数値ではなく、業務がどう変わったかでご紹介しています。</p>
@@ -555,6 +654,11 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
         <div><dt>課題</dt><dd>人による確認作業が多く、確認漏れや再確認が頻発。業務効率が上がりにくい状態でした。</dd></div>
         <div><dt>成果</dt><dd>配車表・荷物の状況・人件費・配送費など、バラバラだった情報を一つに連携。ひとつを更新すると関連情報がすべて連動するため、確認の手間が大きく減り、人を増やさずに業務が回る体制になりました。</dd></div>
       </dl>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">何をつないだか</p>
+        <div class="converge"><div class="converge__list"><span class="node node--dim">配車表</span><span class="node node--dim">荷物の状況</span><span class="node node--dim">人件費</span><span class="node node--dim">配送費</span></div><span class="arrow" aria-hidden="true">→</span><span class="node node--ai node--hub">一つに連携</span></div>
+        <p class="fig__note">ひとつ更新すると、関連する情報がすべて連動</p>
+      </div>
       <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-01.jpg" alt="門正運輸株式会社 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
@@ -565,8 +669,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <h3 class="slide__title reveal" style="--d:1">ケイズモビリティ 様</h3>
       <dl class="case reveal" style="--d:2">
         <div><dt>課題</dt><dd>業務の進め方が個人の経験に頼りがちで、社内で情報やノウハウを共有しづらい状態でした。</dd></div>
-        <div><dt>成果</dt><dd>マニュアルや業務フローを社内で共有・更新するためのポータルアプリを構築し、情報共有や教育、引き継ぎがスムーズに。シフト作成も自動化し、作業時間を大幅に削減することで経営体制を健全化しました。</dd></div>
+        <div><dt>成果</dt><dd>マニュアルや業務の流れを社内で共有・更新できるアプリを構築し、情報共有や教育、引き継ぎがスムーズに。シフト作成も自動化し、作業時間を大幅に削減することで経営体制を健全化しました。</dd></div>
       </dl>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">つくったもの</p>
+        <div class="flow"><span class="node node--dim">マニュアル・業務の流れ</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">社内で共有・更新できるアプリ</span><span class="arrow" aria-hidden="true">→</span><span class="node">共有・教育・引き継ぎ</span></div><div class="flow"><span class="node node--dim">シフト作成</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">自動化</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">作業時間を削減</span></div>
+      </div>
       <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-02.jpg" alt="ケイズモビリティ 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
@@ -577,15 +685,19 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
       <h3 class="slide__title reveal" style="--d:1">FUJINO GROUP 様</h3>
       <dl class="case reveal" style="--d:2">
         <div><dt>課題</dt><dd>社長自身がAIで壁打ちをするなど関心は高いものの、実際の社内業務にどう活かせばよいかが分からない状態でした。</dd></div>
-        <div><dt>成果</dt><dd>資料作成や数値分析、定期作業を自動化し、社内のAIリテラシーが向上。士業AIの活用で知識と選択肢が増え、リスクマネジメントが強化されるなど、「AIを実務で回せる会社」になりました。</dd></div>
+        <div><dt>成果</dt><dd>資料作成や数値分析、定期作業を自動化し、社内でAIを使いこなす力が向上。士業AIの活用で知識と選択肢が増え、リスク管理が強化されるなど、「AIを実務で回せる会社」になりました。</dd></div>
       </dl>
+      <div class="fig reveal" style="--d:3">
+        <p class="fig__cap">変わったこと</p>
+        <div class="flow"><span class="node node--dim">資料作成</span><span class="node node--dim">数値分析</span><span class="node node--dim">定期作業</span><span class="arrow" aria-hidden="true">→</span><span class="node node--ai">自動化</span><span class="arrow" aria-hidden="true">→</span><span class="node node--hi">AIを実務で回せる会社</span></div>
+      </div>
       <!-- 看板前の写真が届いたら：<figure class="slide__photo reveal" style="--d:3"><img src="assets/case-03.jpg" alt="FUJINO GROUP 様の看板前で" width="1200" height="800" loading="lazy" decoding="async"></figure> -->
     </div></div>
   </section>
   <section class="slide slide--s" id="stance">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">OUR STANCE</p>
+      <p class="slide__tag reveal">私たちの姿勢</p>
       <h3 class="slide__title reveal" style="--d:1">数字より、変化の“構造”で語ります。</h3>
       <p class="slide__lead reveal" style="--d:2">「すごい成果」を盛るのではなく、業務の何がどう変わるかを丁寧にお見せします。</p>
       <ul class="mini reveal" style="--d:3">
@@ -615,7 +727,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide chapter" id="ch-future" data-frame="0.9">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">The Future</p>
+      <p class="eyebrow reveal">未来</p>
       <h2 class="slide__title slide__title--xl reveal" style="--d:1">テクノロジーが、<br>地域の未来を変える。</h2>
       <p class="slide__lead reveal" style="--d:2">人とAIのハイブリッド経営を、日本の新しいスタンダードに。<br>その一歩を、淡路から、御社から。</p>
     </div></div>
@@ -625,8 +737,12 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="process">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Process</p>
+      <p class="eyebrow reveal">導入の流れ</p>
       <h2 class="slide__title reveal" style="--d:1">「何から始めればいいか分からない」<span class="nw">で大丈夫</span></h2>
+      <div class="fig reveal" style="--d:2">
+        <p class="fig__cap">4つの段階</p>
+        <ol class="tl" style="--n:4"><li data-n="1"><b>無料相談</b>LINEで現状をお聞きします</li><li data-n="2"><b>整理・提案</b>優先順位と費用感</li><li data-n="3"><b>設計・実装</b>無理のない範囲から</li><li data-n="4" class="is-hi"><b>定着まで伴走</b>現場が自走するまで</li></ol>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s" id="step-1">
@@ -670,18 +786,18 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="faq">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner slide__inner--wide">
-      <p class="eyebrow reveal">FAQ</p>
+      <p class="eyebrow reveal">ご質問</p>
       <h2 class="slide__title reveal" style="--d:1">よくあるご質問</h2>
       <div class="faq reveal" style="--d:2">
         <details><summary><span class="faq__q">Q.</span>AIに詳しくないと使えませんか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>いいえ。むしろ「詳しくない」前提で、経営者の言葉に合わせて進めます。専門用語は使いません。</p></div></details>
-        <details><summary><span class="faq__q">Q.</span>どのくらいの期間で効果が出ますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>コーチングは3ヶ月を基本に、現場で使える状態を目指します。内容によって最適な進め方をご提案します。</p></div></details>
+        <details><summary><span class="faq__q">Q.</span>どのくらいの期間で効果が出ますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>研修は3ヶ月を基本に、現場で使える状態を目指します。内容によって最適な進め方をご提案します。</p></div></details>
         <details><summary><span class="faq__q">Q.</span>中小企業でも導入できますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。紙・Excel・口頭中心の現場こそ、AIで変えられる伸びしろが大きい領域です。</p></div></details>
         <details><summary><span class="faq__q">Q.</span>まず何から相談すればいいですか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>決まっていなくて大丈夫です。LINEで現状を聞かせてください。こちらで論点を整理します。</p></div></details>
         <p class="faq-group__title">AI研修・教育／AI社員構築について</p>
         <details><summary><span class="faq__q">Q.</span>AIの知識がなくても受けられますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。むしろ知識ゼロを前提に、経営者の言葉で進めます。専門用語は使いません。</p></div></details>
         <details><summary><span class="faq__q">Q.</span>3ヶ月が終わったらどうなりますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>自社内でAIを使い続けられる状態を目指します。必要に応じて、その後の伴走もご相談いただけます。</p></div></details>
         <details><summary><span class="faq__q">Q.</span>現場の人数が少なくても効果がありますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>はい。少人数だからこそ、一人あたりの業務をAIで軽くする効果が大きい場面が多くあります。</p></div></details>
-        <details><summary><span class="faq__q">Q.</span>他のサービスとどう違いますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>研修や導入で終わらず、現場のルール・テンプレートまで一緒に作り、定着まで伴走する点が特徴です。</p></div></details>
+        <details><summary><span class="faq__q">Q.</span>他のサービスとどう違いますか？<span class="faq__pm" aria-hidden="true"></span></summary><div class="faq__a"><span>A.</span><p>研修や導入で終わらず、現場のルール・ひな形まで一緒に作り、定着まで伴走する点が特徴です。</p></div></details>
       </div>
       <p class="slide__note reveal" style="--d:3">どのメニューが合うか、相談しませんか？ 完全無料・売り込みなし。現状をお聞きして、最適な進め方を一緒に整理します。</p>
     </div></div>
@@ -691,16 +807,16 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="philosophy">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Philosophy</p>
+      <p class="eyebrow reveal">想い</p>
       <h2 class="slide__title reveal" style="--d:1">「共に」を、<br>いちばん大切にする会社。</h2>
       <p class="slide__lead reveal" style="--d:2">私たちは、AIを売る会社ではありません。経営者の隣で、定着まで“共に”走るAI導入パートナーです。</p>
-      <p class="slide__note reveal" style="--d:3">MISSION / VISION / VALUE ─ 私たちが大切にしていること</p>
+      <p class="slide__note reveal" style="--d:3">使命・目指す姿・大切にする価値 ─ 私たちが大切にしていること</p>
     </div></div>
   </section>
   <section class="slide slide--s" id="mission">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">MISSION</p>
+      <p class="slide__tag reveal">使命 ─ Mission</p>
       <h3 class="slide__title reveal" style="--d:1">AIを通じて、企業と未来をつなげる</h3>
       <p class="slide__lead reveal" style="--d:2">テクノロジーを「一部の大企業のもの」で終わらせない。中小企業の現場にこそ、AIの力を届けます。</p>
     </div></div>
@@ -708,7 +824,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="vision">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">VISION</p>
+      <p class="slide__tag reveal">目指す姿 ─ Vision</p>
       <h3 class="slide__title reveal" style="--d:1">人とAIのハイブリッド経営を、日本の新しいスタンダードに</h3>
       <p class="slide__lead reveal" style="--d:2">人にしかできない仕事に集中できる経営へ。AIと人が補い合う形を、当たり前にしていきます。</p>
     </div></div>
@@ -716,8 +832,8 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="value">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">VALUE</p>
-      <h3 class="slide__title reveal" style="--d:1">「共に」が、AI Linqsのアイデンティティ</h3>
+      <p class="slide__tag reveal">大切にする価値 ─ Value</p>
+      <h3 class="slide__title reveal" style="--d:1">「共に」が、AI Linqsらしさ</h3>
       <ul class="dash slide__lead reveal" style="--d:2">
         <li>「共に」経営者の隣で、共に勝ちにいく</li>
         <li>「共に」考え、共に動き、共に成果を出す</li>
@@ -730,7 +846,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide" id="company">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Message</p>
+      <p class="eyebrow reveal">会社概要</p>
       <h2 class="slide__title slide__title--m reveal" style="--d:1">代表メッセージ</h2>
       <div class="message reveal" style="--d:2">
         <!-- 社長の写真が届いたら：<img class="message__portrait" src="assets/ceo.jpg" alt="代表取締役 田中 勇気" width="224" height="224" loading="lazy" decoding="async"> -->
@@ -745,7 +861,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="why-us">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">WHY AI LINQS</p>
+      <p class="slide__tag reveal">なぜ必要か</p>
       <h3 class="slide__title reveal" style="--d:1">なぜ、私たちが必要だと考えるのか</h3>
       <div class="prose slide__lead reveal" style="--d:2">
         <p>日本の中小企業は、いま大きな構造的課題に直面しています。</p>
@@ -761,7 +877,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="company-info">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">COMPANY</p>
+      <p class="slide__tag reveal">会社情報</p>
       <h3 class="slide__title slide__title--m reveal" style="--d:1">会社情報</h3>
       <!-- [要確認] 会社概要（運営法人=アイリンクス株式会社／設立年・法人格の最終確認） -->
       <dl class="info reveal" style="--d:2">
@@ -777,7 +893,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--center" id="contact">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="eyebrow reveal">Contact</p>
+      <p class="eyebrow reveal">お問い合わせ</p>
       <h2 class="slide__title slide__title--xl reveal" style="--d:1">まずは、LINEで<br>無料相談から。</h2>
       <p class="slide__lead reveal" style="--d:2">完全無料・売り込みなし。自社のAI化ポイントを、一緒に整理しましょう。</p>
       <div class="slide__actions reveal" style="--d:3">
@@ -791,14 +907,16 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <section class="slide slide--s" id="contact-step">
     <div class="slide__shade" aria-hidden="true"></div>
     <div class="container"><div class="slide__inner">
-      <p class="slide__tag reveal">STEP</p>
+      <p class="slide__tag reveal">無料相談</p>
       <h3 class="slide__title reveal" style="--d:1">無料相談で分かること</h3>
       <p class="slide__lead reveal" style="--d:2">難しい準備は要りません。LINEで現状をお聞きし、自社のAI化ポイント・優先順位・費用感を一緒に整理します。</p>
-      <ul class="mini reveal" style="--d:3">
-        <li><span>01</span><span><b>自社のAI化余地</b>どこにAIを使う余地があるか、現状からお伝えします。</span></li>
-        <li><span>02</span><span><b>優先順位</b>何から始めると効果が高いか、順番を整理します。</span></li>
-        <li><span>03</span><span><b>費用感</b>どのくらいの規模・費用になりそうか、目安をお伝えします。</span></li>
-      </ul>
+      <div class="fig reveal" style="--d:3">
+        <div class="icons3">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><b>自社のAI化余地</b>どこにAIを使う余地があるか、現状からお伝えします。</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h3M4 12h3M4 18h3M10 6h10M10 12h10M10 18h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><b>優先順位</b>何から始めると効果が高いか、順番を整理します。</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l5 6 5-6M12 10v10M8 13h8M8 16h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>費用感</b>どのくらいの規模・費用になりそうか、目安をお伝えします。</div>
+        </div>
+      </div>
     </div></div>
   </section>
   <section class="slide slide--s slide--center" id="line">
@@ -851,7 +969,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <div class="modal__inner">
     <div class="modal__head">
       <div>
-        <p class="slide__tag">①コーチング事業</p>
+        <p class="slide__tag">①研修・伴走事業</p>
         <h2 id="dtTitle">AI研修・教育</h2>
       </div>
       <form method="dialog"><button class="btn btn--ghost modal__close" type="submit">閉じる</button></form>
@@ -860,23 +978,23 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     <p>社内にAIを定着させる「AI研修・教育」と、反復業務を自動化する「AI社員構築」。AI Linqsの中心となる2つのサービスです。</p>
     <p style="margin-top:14px">「AIって何？」の状態から、3ヶ月で“現場で使える”状態へ。経営者の言葉に合わせて進めるので、知識ゼロでも大丈夫です。</p>
     <div class="ba">
-      <div class="ba__col"><p class="ba__h">Before（よくある状態）</p><ul class="dash">
+      <div class="ba__col"><p class="ba__h">導入前（よくある状態）</p><ul class="dash">
         <li>AIを何に使えばいいか分からない</li>
         <li>現場が使ってくれない</li>
         <li>何から始めればいいか整理できない</li>
       </ul></div>
       <div class="ba__arrow" aria-hidden="true">→</div>
-      <div class="ba__col ba__col--after"><p class="ba__h">After（3ヶ月後）</p><ul class="dash">
+      <div class="ba__col ba__col--after"><p class="ba__h">導入後（3ヶ月後）</p><ul class="dash">
         <li>業務で使えるルールが整う</li>
         <li>担当者が自走できる</li>
         <li>次の投資判断ができる</li>
       </ul></div>
     </div>
     <div class="row"><h4 class="row__h">こんな企業に向いています</h4><p>「研修をやったが定着しなかった」「何から始めるか整理して、外部に任せたい」「社内の理解を統一してから導入を判断したい」</p></div>
-    <div class="row"><h4 class="row__h">3ヶ月の進め方</h4><ul class="dash"><li>1ヶ月目：現状分析・課題整理</li><li>2ヶ月目：ルール・テンプレート作成・現場展開</li><li>3ヶ月目：定着確認・次のステップ設計</li></ul></div>
+    <div class="row"><h4 class="row__h">3ヶ月の進め方</h4><ul class="dash"><li>1ヶ月目：現状分析・課題整理</li><li>2ヶ月目：ルール・ひな形の作成、現場展開</li><li>3ヶ月目：定着確認・次のステップ設計</li></ul></div>
     <div class="row"><h4 class="row__h">選ばれる3つの理由</h4><ul class="dash"><li>①研修で終わらない（現場のルールまで作る）</li><li>②経営者の言語に合わせる</li><li>③次の投資判断の材料まで提供する</li></ul></div>
     <p class="price">料金は内容に応じてご提案します（まずはLINEで無料相談）</p>
-    <p class="note">関連メニュー：広告内製化コーチング（Meta／Google）、LPコーチング もご用意。詳細はご相談ください。<span class="todo">[料金：要設定]</span></p>
+    <p class="note">関連メニュー：広告の内製化支援（Meta／Google）、集客ページ（LP）の内製化支援 もご用意。詳細はご相談ください。<span class="todo">[料金：要設定]</span></p>
   </div>
 </dialog>
 
@@ -893,35 +1011,10 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
     <p>反復業務はAI社員が、確認・管理業務はAI部署長が担当。担当者依存と管理者への確認集中を解消し、人にしかできない仕事に集中できる体制をつくります。</p>
     <div style="margin-top:22px">
       <div class="row"><h4 class="row__h">AI社員構築</h4><p>反復・定型業務をAIが担い、担当者依存を解消。「あの人しか分からない」をなくし、業務を仕組みに落とし込みます。</p></div>
-      <div class="row"><h4 class="row__h">AI部署長構築</h4><p>報告・確認・進捗管理などをAIが整理。管理者への確認集中をほどき、判断のボトルネックを解消します。</p></div>
-      <div class="row"><h4 class="row__h">進め方</h4><p>現場をヒアリングし、効果の高い業務から段階的に。無理のない範囲で、定着まで伴走します。</p></div>
+      <div class="row"><h4 class="row__h">AI部署長構築</h4><p>報告・確認・進捗管理などをAIが整理。管理者への確認集中をほどき、判断の詰まりを解消します。</p></div>
+      <div class="row"><h4 class="row__h">進め方</h4><p>現場の話をお聞きし、効果の高い業務から段階的に。無理のない範囲で、定着まで伴走します。</p></div>
     </div>
     <p class="price">料金はご相談ください（要見積り）</p>
-  </div>
-</dialog>
-
-<!-- ============ 小窓：サービス比較（v1 services.html） ============ -->
-<dialog class="modal" id="detail-compare" aria-labelledby="dcTitle">
-  <div class="modal__inner">
-    <div class="modal__head">
-      <div>
-        <p class="slide__tag">COMPARISON</p>
-        <h2 id="dcTitle">サービス比較</h2>
-      </div>
-      <form method="dialog"><button class="btn btn--ghost modal__close" type="submit">閉じる</button></form>
-    </div>
-    <div class="table-wrap">
-      <table class="compare">
-        <thead><tr><th scope="col">サービス</th><th scope="col">解決する課題</th><th scope="col">こんな企業に</th><th scope="col">料金</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">AI研修・教育</th><td>社内にAIが定着しない</td><td>これから始めたい</td><td>ご相談ください</td></tr>
-          <tr><th scope="row">AI社員・AI部署長構築</th><td>反復業務・属人化・確認集中</td><td>業務自動化・管理負荷を減らしたい</td><td>ご相談ください</td></tr>
-          <tr><th scope="row">社内アプリ・業務システム</th><td>紙・Excel運用の限界</td><td>現場の仕組みを変えたい</td><td>ご相談ください</td></tr>
-          <tr><th scope="row">AI顧問</th><td>継続的なAI戦略</td><td>複数導入後の伴走が欲しい</td><td>ご相談ください</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">※ 上記のほか、社内DX整備・OA機器選定補助などもご相談いただけます。</p>
   </div>
 </dialog>
 
@@ -930,7 +1023,7 @@ strong{font-weight:500;color:var(--text);box-shadow:inset 0 -1px 0 rgba(201,169,
   <div class="modal__inner">
     <div class="modal__head">
       <div>
-        <p class="slide__tag">PRIVACY POLICY</p>
+        <p class="slide__tag">個人情報の取り扱い</p>
         <h2 id="privacyTitle">プライバシーポリシー</h2>
       </div>
       <form method="dialog"><button class="btn btn--ghost modal__close" type="submit">閉じる</button></form>
